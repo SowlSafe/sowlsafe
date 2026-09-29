@@ -218,7 +218,7 @@ function render(meta, body, rel) {
   const dst = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(dst), { recursive: true });
   fs.writeFileSync(dst, html);
-  SITEMAP.push(rel);
+  if (rel !== '404.html') SITEMAP.push(rel);
 }
 const SITEMAP = [];
 
