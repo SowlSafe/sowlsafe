@@ -73,6 +73,8 @@ const tests = walk(path.join(ROOT, 'src/content/tests'))
   .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 
 const tools = [
+  { id: 'profil-de-risque', title: 'Mon profil de risque au quotidien', module: 'Neurodiversité', format: '4 étapes',
+    summary: 'Diagnostic, difficultés ressenties, activité et moment : découvrez quelles activités vous demandent le plus de vigilance.', cta: 'Découvrir mon profil', href: 'outils/profil-de-risque.html' },
   { id: 'evaluateur', title: 'Évaluateur de contexte', module: 'Tous modules', format: '5 questions',
     summary: 'Fatigue, pression, distractions : estimez votre niveau de vigilance du moment.', cta: 'Évaluer ma situation', href: 'outils/evaluateur.html' },
   ...tests.map((t) => ({

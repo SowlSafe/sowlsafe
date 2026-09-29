@@ -1,0 +1,137 @@
+<!--meta {"title": "Mon profil de risque", "nav": "outils", "scripts": ["profil-risque.js"], "description": "Diagnostic, difficultés ressenties, activité et moment de la journée : découvrez votre profil de risque au quotidien et des recommandations appuyées sur la recherche."} -->
+<section class="page-hero band-night">
+  <div class="wrap hero-copy">
+    <p class="eyebrow">Outil · Neurodiversité · 4 étapes · 3 minutes</p>
+    <h1>Mon profil de risque au quotidien</h1>
+    <p class="lead">Chaque activité sollicite des fonctions différentes : attention, gestes, perception, mémoire. Selon votre profil et le moment de la journée, certaines demandent plus de vigilance. Découvrez lesquelles et comment vous protéger.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="wizard" data-profil>
+      <div class="wiz-top">
+        <div class="wiz-count"><span data-count></span><span>Réponses non enregistrées</span></div>
+        <div class="wiz-bar"><i data-bar></i></div>
+      </div>
+      <form>
+        <fieldset class="wiz-step">
+          <legend>Avez-vous reçu un diagnostic de trouble du neurodéveloppement ?</legend>
+          <div class="answers">
+            <label><input type="radio" name="dxstatut" value="oui" id="dx-oui"><span>Oui</span></label>
+            <label><input type="radio" name="dxstatut" value="encours" id="dx-encours"><span>Un diagnostic est en cours</span></label>
+            <label><input type="radio" name="dxstatut" value="question" id="dx-question"><span>Non, mais je me pose la question</span></label>
+            <label><input type="radio" name="dxstatut" value="non" id="dx-non" checked><span>Non</span></label>
+          </div>
+          <fieldset class="field" data-dx-types hidden>
+            <legend>Lequel ou lesquels ?</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="dx" value="tdah" id="dx-tdah"><span>TDAH</span></label>
+              <label class="chip"><input type="checkbox" name="dx" value="tsa" id="dx-tsa"><span>TSA</span></label>
+              <label class="chip"><input type="checkbox" name="dx" value="dys" id="dx-dys"><span>Trouble dys (dyslexie, dyspraxie…)</span></label>
+              <label class="chip"><input type="checkbox" name="dx" value="autre" id="dx-autre"><span>Autre</span></label>
+            </div>
+          </fieldset>
+        </fieldset>
+
+        <fieldset class="wiz-step" hidden>
+          <legend>Au quotidien, qu'est-ce qui vous est difficile ?</legend>
+          <p class="field-hint">Avec ou sans diagnostic, répondez selon votre ressenti.</p>
+          <div class="diff-list">
+            <fieldset class="diff-row">
+              <legend>Rester concentré(e) longtemps sur la même tâche</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="attention" value="0" id="attention-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="attention" value="1" id="attention-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="attention" value="2" id="attention-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Ne pas me laisser distraire par ce qui se passe autour</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="distraction" value="0" id="distraction-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="distraction" value="1" id="distraction-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="distraction" value="2" id="distraction-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Attendre, ne pas agir dans la précipitation</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="impulsivite" value="0" id="impulsivite-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="impulsivite" value="1" id="impulsivite-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="impulsivite" value="2" id="impulsivite-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Penser à ce que je dois faire, ne pas oublier une étape</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="memoire" value="0" id="memoire-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="memoire" value="1" id="memoire-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="memoire" value="2" id="memoire-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Évaluer les distances et les vitesses, me repérer dans l'espace</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="visuo" value="0" id="visuo-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="visuo" value="1" id="visuo-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="visuo" value="2" id="visuo-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Coordonner mes gestes, être précis(e) et adroit(e)</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="motricite" value="0" id="motricite-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="motricite" value="1" id="motricite-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="motricite" value="2" id="motricite-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Supporter le bruit, la lumière, la foule</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="sensoriel" value="0" id="sensoriel-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="sensoriel" value="1" id="sensoriel-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="sensoriel" value="2" id="sensoriel-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="diff-row">
+              <legend>Garder mon énergie jusqu'en fin de journée, bien dormir</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="fatigue" value="0" id="fatigue-0" checked><span>Pas de difficulté</span></label>
+                <label class="chip"><input type="radio" name="fatigue" value="1" id="fatigue-1"><span>Parfois</span></label>
+                <label class="chip"><input type="radio" name="fatigue" value="2" id="fatigue-2"><span>Souvent</span></label>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+
+        <fieldset class="wiz-step" hidden>
+          <legend>Quelle activité voulez-vous évaluer ?</legend>
+          <div class="tiles"><label class="tile"><input type="radio" name="activite" value="conduite" id="act-conduite" checked><b>Conduire</b><small>Voiture, deux-roues motorisé</small></label><label class="tile"><input type="radio" name="activite" value="mobilite" id="act-mobilite"><b>Vélo, trottinette, à pied</b><small>Circulation, traversées</small></label><label class="tile"><input type="radio" name="activite" value="cuisine" id="act-cuisine"><b>Cuisiner</b><small>Feux, couteaux, four</small></label><label class="tile"><input type="radio" name="activite" value="bricolage" id="act-bricolage"><b>Bricoler, travaux</b><small>Outils, échelle, électricité</small></label><label class="tile"><input type="radio" name="activite" value="enfants" id="act-enfants"><b>Surveiller des enfants</b><small>Maison, sorties, repas</small></label><label class="tile"><input type="radio" name="activite" value="sport" id="act-sport"><b>Sport, montagne</b><small>Randonnée, escalade, ski, vélo</small></label></div>
+        </fieldset>
+
+        <fieldset class="wiz-step" hidden>
+          <legend>À quel moment de la journée ?</legend>
+          <div class="answers">
+            <label><input type="radio" name="moment" value="matin" id="m-matin" checked><span>Le matin</span></label>
+            <label><input type="radio" name="moment" value="apres-midi" id="m-am"><span>En début d'après-midi</span></label>
+            <label><input type="radio" name="moment" value="soiree" id="m-soir"><span>En soirée</span></label>
+            <label><input type="radio" name="moment" value="nuit" id="m-nuit"><span>La nuit</span></label>
+          </div>
+        </fieldset>
+
+        <div class="wiz-nav">
+          <button class="btn" type="button" data-next>Continuer</button>
+          <button class="linkbtn" type="button" data-back hidden>Retour</button>
+        </div>
+      </form>
+
+      <div class="result-card" data-result hidden aria-live="polite"></div>
+      <div class="btn-row" data-done hidden>
+        <button class="btn" type="button" data-other>Évaluer une autre activité</button>
+        <button class="btn btn-ghost" type="button" data-edit>Modifier mes réponses</button>
+        <a class="btn btn-ghost" href="{{pre}}contact.html#particulier">Demander un bilan personnalisé</a>
+      </div>
+    </div>
+  </div>
+</section>
