@@ -128,8 +128,9 @@ const NAV = [
   ['outils', 'Outils', 'outils.html'],
   ['articles', 'Articles', 'articles.html'],
   ['application', "L'appli", 'application.html'],
+  ['a-propos', 'À propos', 'a-propos.html'],
 ];
-const FOOTER_NAV = [...NAV, ['a-propos', 'À propos', 'a-propos.html'], ['approche', 'Notre approche', 'approche.html'], ['modules', 'Modules', 'modules.html']];
+const FOOTER_NAV = [...NAV, ['approche', 'Notre approche', 'approche.html'], ['modules', 'Modules', 'modules.html']];
 
 // Réglages d'accessibilité appliqués avant l'affichage (évite un « flash »)
 const A11Y_BOOT = `<script>try{var a=JSON.parse(localStorage.getItem('sowlsafe-a11y')||'{}'),r=document.documentElement;if(a.size)r.dataset.a11ySize=a.size;['font','spacing','motion','contrast'].forEach(function(k){if(a[k])r.classList.add('a11y-'+k)})}catch(e){}</script>`;
