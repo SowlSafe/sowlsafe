@@ -101,6 +101,9 @@ const toolCard = (t) => `<a class="card-link tool-card" href="{{pre}}${t.href}">
   <span class="more">${esc(t.cta)}</span>
 </a>`;
 
+// Adresse publique d'une page (Cloudflare sert les pages sans « .html »)
+const pageUrl = (rel) => `${SITE.url}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '')}`;
+
 // ---------- gabarit ----------
 const OWL = `<svg class="owl" viewBox="0 0 40 40" aria-hidden="true"><path class="owl-head" d="M5 9 11.5 3.5 16 8.5h8l4.5-5L35 9v15.5C35 32.5 28.3 38 20 38S5 32.5 5 24.5Z"/><circle class="owl-eye" cx="13.6" cy="19" r="6.2"/><circle class="owl-eye" cx="26.4" cy="19" r="6.2"/><circle class="owl-iris" cx="13.6" cy="19" r="3"/><circle class="owl-iris" cx="26.4" cy="19" r="3"/><path class="owl-iris" d="m20 24 2.2 3.2h-4.4Z"/></svg>`;
 
@@ -145,6 +148,11 @@ function layout({ meta, body, rel, isEntry }) {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(meta.description || SITE.description)}">
 <meta property="og:type" content="website">
+<link rel="canonical" href="${pageUrl(rel)}">
+<meta property="og:url" content="${pageUrl(rel)}">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="${SITE.name}">
+${SITE.googleVerification ? `<meta name="google-site-verification" content="${esc(SITE.googleVerification)}">` : ''}
 <meta name="theme-color" content="#13233a">
 ${A11Y_BOOT}
 <link rel="icon" href="${pre}assets/favicon.svg" type="image/svg+xml">
@@ -210,7 +218,9 @@ function render(meta, body, rel) {
   const dst = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(dst), { recursive: true });
   fs.writeFileSync(dst, html);
+  SITEMAP.push(rel);
 }
+const SITEMAP = [];
 
 // Pages fixes
 const pagesDir = path.join(ROOT, 'src/pages');
@@ -246,4 +256,12 @@ for (const t of tests) {
   const body = fill(testTpl, { title: esc(t.title), module: esc(t.module), format: esc(tool.format), lead: esc(t.lead || t.summary), config: cfg });
   render({ title: t.title, description: t.summary, nav: 'outils', scripts: ['quiz.js'] }, body, `outils/${t.slug}.html`);
 }
+// Plan du site et consignes pour les moteurs de recherche
+const today = new Date().toISOString().slice(0, 10);
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${SITEMAP.map((r) => `  <url><loc>${pageUrl(r)}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+</urlset>
+`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
 console.log(`✓ ${articles.length} article(s), ${tests.length} test(s) → ${path.relative(ROOT, OUT)}/`);
