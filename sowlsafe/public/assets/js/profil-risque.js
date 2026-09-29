@@ -50,15 +50,20 @@
     curry: 'Curry et al. (2021), JAACAP : les jeunes conducteurs avec un TSA n\'ont pas plus d\'accidents, mais davantage lors des refus de priorité et des tourne-à-gauche.',
     mercier: 'Mercier et al. (2025), Journal of Autism and Developmental Disorders : chez les conducteurs avec un TSA, difficultés surtout dans les situations complexes et rapides.',
     stavrinos: 'Stavrinos et al. (2011), Pediatrics : les enfants avec un TDAH traversent la rue en laissant des marges de sécurité plus courtes.',
+    yeh: 'Yeh et al. (2020), Neuropsychiatric Disease and Treatment : les enfants avec un TDAH ont 1,8 fois plus de risques de brûlures.',
+    li: 'Li et al. (2021), IJERPH : les parents d\'enfants avec un TDAH se blessent davantage eux-mêmes (brûlures + 30 %, fractures + 20 %), sous l\'effet de la charge, du stress et parfois d\'un TDAH non diagnostiqué.',
+    iverson: 'Iverson et al. (2020), Journal of Attention Disorders : chez 32 487 jeunes sportifs, les commotions cérébrales sont plus fréquentes en cas de TDAH ou de trouble des apprentissages (dys).',
+    breslin: 'Breslin et Pole (2009), American Journal of Public Health : les jeunes travailleurs avec un TDAH ou un trouble des apprentissages ont un risque plus élevé de blessure au travail.',
+    liu: 'Liu et al. (2023), The Lancet Healthy Longevity : les adultes avec un TSA de plus de 45 ans ont davantage de chutes et d\'intoxications, mais pas plus d\'accidents de la route.',
     coogan: 'Coogan et McGowan (2017), ADHD Attention Deficit and Hyperactivity Disorders : le TDAH est associé à une horloge biologique décalée vers le soir et à un endormissement plus tardif.',
   };
   const ACT_REFS = {
-    conduite: { tdah: ['chang', 'galera'], tsa: ['curry', 'mercier'], dys: ['oliveira'], any: ['galera'] },
+    conduite: { tdah: ['chang', 'galera'], tsa: ['curry', 'mercier', 'liu'], dys: ['oliveira'], any: ['galera'] },
     mobilite: { tdah: ['stavrinos'], dys: ['oliveira'], any: ['stavrinos'] },
-    cuisine: { tdah: ['brunk', 'fuermaier'], any: ['brunk'] },
-    bricolage: { tdah: ['brunk'], dys: ['oliveira'], any: ['brunk'] },
-    enfants: { tdah: ['fuermaier'], any: [] },
-    sport: { tdah: ['brunk'], dys: ['oliveira'], any: ['brunk'] },
+    cuisine: { tdah: ['yeh', 'fuermaier'], tsa: ['liu'], any: ['brunk'] },
+    bricolage: { tdah: ['breslin'], dys: ['breslin', 'oliveira'], tsa: ['liu'], any: ['brunk'] },
+    enfants: { tdah: ['li', 'fuermaier'], any: ['li'] },
+    sport: { tdah: ['iverson'], dys: ['iverson', 'oliveira'], any: ['iverson'] },
   };
 
   const TIPS = {
