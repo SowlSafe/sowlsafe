@@ -9,10 +9,10 @@ Site statique sans dépendance : un petit générateur (`build.mjs`) assemble le
 
 | Dossier | Contenu |
 |---|---|
-| `src/pages/` | Pages du site (accueil, approche, modules, outils, audit…). Chaque fichier commence par un bloc `<!--meta {...} -->`. |
-| `src/articles/` | Un fichier HTML par article (métadonnées : titre, module, date, résumé, image, sources). La liste des articles se met à jour toute seule. |
-| `src/data/outils.json` | Liste des outils affichés sur le site. |
-| `src/templates/article.html` | Gabarit d'un article. |
+| `src/pages/` | Pages fixes du site (accueil, particuliers, entreprises, inclusion…). Chaque fichier commence par un bloc `<!--meta {...} -->`. |
+| `src/content/articles/` | **Un fichier Markdown par article** (en-tête : titre, module, date, résumé, image, L'essentiel, sources). Modifiable depuis l'administration. |
+| `src/content/tests/` | **Un fichier JSON par test** (dimensions, questions, conseils). Une page est créée automatiquement pour chaque test. |
+| `src/templates/` | Gabarits d'un article et d'un test. |
 | `public/` | Fichiers copiés tels quels : CSS, JavaScript, images, documents. |
 | `site.json` | Nom, signature et description du site. |
 
@@ -36,6 +36,15 @@ Pour tester en local : `python3 -m http.server -d dist` puis ouvrir http://local
    - Build output directory : `dist`
 4. **Save and Deploy**. Le site est en ligne sur `sowlsafe.pages.dev`, puis à chaque envoi sur GitHub.
 5. Plus tard : **Custom domains** pour brancher `sowlsafe.fr` ou `sowlsafe.com`.
+
+## Administration (Pages CMS, gratuit)
+
+1. Le fichier `.pages.yml` doit se trouver **à la racine** du dépôt GitHub.
+2. Aller sur https://app.pagescms.org, **Sign in with GitHub**, autoriser l'accès au dépôt `sowlsafe`.
+3. Deux rubriques apparaissent : **Articles** et **Tests**. Ajouter, modifier, publier ou dépublier (case « Publié sur le site »).
+4. Chaque enregistrement est envoyé sur GitHub ; Cloudflare remet le site à jour en une minute environ.
+
+Dans le texte d'un article, écrire `[1]`, `[2]`… renvoie automatiquement vers la source correspondante.
 
 ## Étapes suivantes
 

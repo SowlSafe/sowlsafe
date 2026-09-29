@@ -8,5 +8,11 @@
     "build": "node build.mjs && node check-links.mjs",
     "preview": "node build.mjs --preview"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "js-yaml": "^4.3.2",
+    "marked": "^15.0.12"
+  }
 }

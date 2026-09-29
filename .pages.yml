@@ -1,0 +1,150 @@
+# Configuration de l'interface d'administration SowlSafe (Pages CMS : https://app.pagescms.org)
+# Ce fichier doit être placé À LA RACINE du dépôt GitHub, sous le nom .pages.yml
+media:
+  input: sowlsafe/public/assets/img
+  output: /assets/img
+  categories: [image]
+
+content:
+  - name: articles
+    label: Articles
+    type: collection
+    path: sowlsafe/src/content/articles
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: published
+        label: Publié sur le site
+        type: boolean
+        default: true
+      - name: module
+        label: Module
+        type: select
+        options:
+          values: [Mobilité, Travail, Industrie, Supervision, Maison, Sport, Sûreté, Inclusion, Facteurs humains]
+      - name: date
+        label: Date de publication
+        type: date
+      - name: readingTime
+        label: Temps de lecture (minutes)
+        type: number
+      - name: summary
+        label: Résumé (2 phrases maximum)
+        type: text
+        required: true
+      - name: image
+        label: Image principale
+        type: image
+      - name: imageAlt
+        label: Description de l'image (pour les personnes malvoyantes)
+        type: string
+      - name: essentiel
+        label: L'essentiel (3 points courts, affichés en haut de l'article)
+        type: string
+        list:
+          max: 5
+      - name: tool
+        label: Test associé (ex. evaluateur, profil-attentionnel, style-conduite)
+        type: string
+      - name: sources
+        label: Sources (dans le texte, écrivez [1], [2]… pour y renvoyer)
+        type: object
+        list:
+          collapsible: true
+        fields:
+          - name: label
+            label: Nom de la source
+            type: string
+          - name: url
+            label: Lien
+            type: string
+      - name: body
+        label: Texte de l'article
+        type: rich-text
+
+  - name: tests
+    label: Tests
+    type: collection
+    path: sowlsafe/src/content/tests
+    format: json
+    filename: "{primary}.json"
+    fields:
+      - name: title
+        label: Titre du test
+        type: string
+        required: true
+      - name: published
+        label: Publié sur le site
+        type: boolean
+        default: true
+      - name: order
+        label: Ordre d'affichage (1 = en premier)
+        type: number
+      - name: module
+        label: Module
+        type: select
+        options:
+          values: [Mobilité, Travail, Industrie, Supervision, Maison, Sport, Sûreté, Inclusion, Facteurs humains, Tous modules]
+      - name: summary
+        label: Résumé affiché sur la carte du test
+        type: text
+      - name: lead
+        label: Phrase d'introduction en haut de la page
+        type: text
+      - name: intro
+        label: Consigne courte (ex. « Pensez aux 3 derniers mois »)
+        type: string
+      - name: scale
+        label: Réponses possibles, de la plus faible à la plus forte
+        type: string
+        list:
+          min: 3
+          max: 7
+      - name: dimensions
+        label: Dimensions mesurées
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: id
+            label: Identifiant (sans espace ni accent, ex. fatigue)
+            type: string
+          - name: label
+            label: Nom de la dimension
+            type: string
+          - name: title
+            label: Titre du résultat si cette dimension domine
+            type: string
+          - name: explain
+            label: Explication du résultat
+            type: text
+          - name: items
+            label: Questions
+            type: string
+            list: true
+          - name: actions
+            label: Conseils proposés
+            type: string
+            list: true
+      - name: lowThreshold
+        label: Seuil « profil sans point faible » (en %, ex. 30)
+        type: number
+      - name: lowTitle
+        label: Titre si aucun point faible
+        type: string
+      - name: lowText
+        label: Texte si aucun point faible
+        type: text
+      - name: lowActions
+        label: Conseils si aucun point faible
+        type: string
+        list: true
+      - name: disclaimer
+        label: Avertissement (sources, limites du test)
+        type: text

@@ -4,6 +4,9 @@
   const root = document.querySelector('[data-quiz]');
   if (!cfgEl || !root) return;
   const cfg = JSON.parse(cfgEl.textContent);
+  cfg.dimensions = (cfg.dimensions || []).filter((d) => d && (d.items || []).length);
+  cfg.lowActions = cfg.lowActions || [];
+  cfg.lowThreshold = cfg.lowThreshold ?? 30;
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   // Items intercalés (une question de chaque dimension à tour de rôle)
@@ -12,32 +15,43 @@
   for (let i = 0; i < maxLen; i++) cfg.dimensions.forEach((d) => d.items[i] && items.push({ dim: d.id, text: d.items[i] }));
 
   const form = root.querySelector('form');
-  const list = form.querySelector('[data-items]');
-  const progress = form.querySelector('[data-progress]');
-  const scaleCls = cfg.scale.length === 6 ? 'likert six' : 'likert';
-  list.innerHTML = items.map((it, i) => `
-    <fieldset class="q">
-      <legend><span class="qnum">${String(i + 1).padStart(2, '0')}</span>${esc(it.text)}</legend>
-      <div class="${scaleCls}">${cfg.scale.map((lab, v) => `
-        <label><input type="radio" name="q${i}" value="${v}" id="q${i}-${v}" required data-dim="${it.dim}"><span>${esc(lab)}</span></label>`).join('')}
+  // Assistant : une question à la fois, passage automatique à la suivante
+  form.innerHTML = `
+    <div class="wiz-top">
+      <div class="wiz-count"><span data-count></span><span>${esc(cfg.intro || '')}</span></div>
+      <div class="wiz-bar"><i data-bar></i></div>
+    </div>
+    ${items.map((it, i) => `
+    <fieldset class="wiz-step" data-step="${i}" ${i ? 'hidden' : ''}>
+      <legend>${esc(it.text)}</legend>
+      <div class="answers">${cfg.scale.map((lab, v) => `
+        <label><input type="radio" name="q${i}" value="${v}" id="q${i}-${v}" data-dim="${it.dim}"><span>${esc(lab)}</span></label>`).join('')}
       </div>
-    </fieldset>`).join('');
-
-  const updateProgress = () => {
-    const done = new Set([...form.querySelectorAll('input:checked')].map((x) => x.name)).size;
-    progress.textContent = `${done} / ${items.length} réponses`;
+    </fieldset>`).join('')}
+    <div class="wiz-nav"><button class="linkbtn" type="button" data-back hidden>Question précédente</button></div>`;
+  form.classList.add('wizard');
+  const steps = [...form.querySelectorAll('.wiz-step')];
+  const back = form.querySelector('[data-back]');
+  let cur = 0;
+  const show = (n) => {
+    cur = n;
+    steps.forEach((s, k) => { s.hidden = k !== n; });
+    form.querySelector('[data-count]').textContent = `Question ${n + 1} sur ${items.length}`;
+    form.querySelector('[data-bar]').style.width = `${(n / items.length) * 100}%`;
+    back.hidden = n === 0;
   };
-  form.addEventListener('change', updateProgress);
-  updateProgress();
+  back.addEventListener('click', () => show(cur - 1));
+  form.addEventListener('change', (e) => {
+    const k = steps.indexOf(e.target.closest('.wiz-step'));
+    if (k !== cur) return;
+    setTimeout(() => (cur < items.length - 1 ? show(cur + 1) : form.requestSubmit()), 220);
+  });
+  show(0);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!form.checkValidity()) {
-      const first = [...form.querySelectorAll('fieldset.q')].find((f) => !f.querySelector('input:checked'));
-      if (first) { first.scrollIntoView({ behavior: 'smooth', block: 'center' }); first.querySelector('input').focus({ preventScroll: true }); }
-      progress.textContent = `Il reste ${items.length - new Set([...form.querySelectorAll('input:checked')].map((x) => x.name)).size} question(s) sans réponse.`;
-      return;
-    }
+    const missing = steps.findIndex((s) => !s.querySelector('input:checked'));
+    if (missing !== -1) { show(missing); return; }
     const maxV = cfg.scale.length - 1;
     const scores = cfg.dimensions.map((d) => {
       const vals = [...form.querySelectorAll(`input:checked[data-dim="${d.id}"]`)].map((x) => Number(x.value));
@@ -68,7 +82,7 @@
     form.hidden = true;
     out.scrollIntoView({ behavior: 'smooth', block: 'start' });
     out.querySelector('[data-restart]').addEventListener('click', () => {
-      form.reset(); updateProgress(); out.hidden = true; form.hidden = false;
+      form.reset(); show(0); out.hidden = true; form.hidden = false;
       root.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });

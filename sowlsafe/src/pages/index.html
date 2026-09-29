@@ -1,62 +1,38 @@
-<!--meta {"title": "SowlSafe", "nav": "", "scripts": ["evaluateur.js"], "description": "SowlSafe traduit la recherche en sciences cognitives, psychologie et ergonomie en outils simples pour prendre de meilleures décisions de sécurité, au travail comme au quotidien."} -->
-<section class="hero band-night">
+<!--meta {"title": "SowlSafe", "nav": "", "description": "SowlSafe met la recherche sur le comportement humain au service de votre sécurité : tests, conseils et audits pour les particuliers et les entreprises."} -->
+<section class="home-hero band-night">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Sciences cognitives · Psychologie · Ergonomie</p>
-      <h1>Voir venir le risque <em>avant</em> qu'il arrive.</h1>
-      <p class="lead">Une même personne ne prend pas les mêmes décisions fatiguée, pressée ou distraite. SowlSafe met la recherche sur le comportement humain à la portée de tous, pour agir sur ce qui compte dans votre situation réelle.</p>
-      <div class="btn-row">
-        <a class="btn" href="{{pre}}outils/evaluateur.html">Évaluer ma situation</a>
-        <a class="btn btn-ghost" href="{{pre}}audit.html">Audit pour les entreprises</a>
+      <p class="eyebrow">{{SIGNATURE}}</p>
+      <h1>Voir venir le risque.</h1>
+      <p class="lead">Des outils issus de la recherche en sciences cognitives pour prendre de meilleures décisions de sécurité, au quotidien comme au travail.</p>
+      <div class="choices" role="group" aria-label="Je suis">
+        <a class="choice primary" href="{{pre}}particuliers.html">
+          <span class="choice-kicker">Je suis</span>
+          <span class="choice-title">Un particulier</span>
+          <span class="choice-sub">Tester ma vigilance et recevoir des conseils</span>
+        </a>
+        <a class="choice" href="{{pre}}entreprises.html">
+          <span class="choice-kicker">Je suis</span>
+          <span class="choice-title">Une entreprise</span>
+          <span class="choice-sub">Prévenir les risques de mes équipes</span>
+        </a>
       </div>
-      <p class="formula"><b>Personne</b> + <b>tâche</b> + <b>environnement</b> + <b>système</b> + <b>contexte</b> <span class="arrow">→</span> comportement et niveau de risque</p>
     </div>
-
-    <div class="panel" data-evaluator data-max="3" aria-labelledby="demo-title">
-      <div class="panel-top">
-        <h2 id="demo-title" class="eyebrow">Évaluateur de contexte</h2>
-        <span class="panel-tag">Exemple pré-rempli · modifiez-le</span>
-      </div>
-      <form>
-        <div class="field">
-          <label for="h-situation">Je m'apprête à…</label>
-          <select id="h-situation" name="situation">
-            <option value="conduite" selected>Conduire (trajet retour du travail)</option>
-            <option value="machine">Utiliser une machine ou un outil</option>
-            <option value="supervision">Surveiller un écran ou un process</option>
-            <option value="sport">Pratiquer un sport</option>
-            <option value="domicile">Bricoler ou travailler en hauteur à la maison</option>
-            <option value="mobilite">Me déplacer à vélo ou à trottinette</option>
-          </select>
-        </div>
-        <div class="field kss">
-          <label for="h-kss">Mon niveau de somnolence</label>
-          <input id="h-kss" name="kss" type="range" min="1" max="9" step="1" value="7" aria-describedby="h-kss-read">
-          <div class="kss-scale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
-          <p class="kss-read" id="h-kss-read" data-kss-read></p>
-        </div>
-        <fieldset class="field">
-          <legend>Pression temporelle</legend>
-          <div class="chips">
-            <label class="chip"><input type="radio" name="pression" value="aucune" id="h-p0"><span>Aucune</span></label>
-            <label class="chip"><input type="radio" name="pression" value="moderee" id="h-p1" checked><span>Modérée</span></label>
-            <label class="chip"><input type="radio" name="pression" value="forte" id="h-p2"><span>Forte</span></label>
-          </div>
-        </fieldset>
-        <fieldset class="field">
-          <legend>Ce qui peut me distraire</legend>
-          <div class="chips">
-            <label class="chip"><input type="checkbox" name="distractions" value="telephone" id="h-d1" checked><span>Téléphone</span></label>
-            <label class="chip"><input type="checkbox" name="distractions" value="conversation" id="h-d2"><span>Conversation</span></label>
-            <label class="chip"><input type="checkbox" name="distractions" value="preoccupation" id="h-d3"><span>Soucis en tête</span></label>
-          </div>
-        </fieldset>
-        <input type="hidden" name="moment" value="soiree">
-        <input type="hidden" name="tache" value="routine">
-        <input type="hidden" name="experience" value="expert">
-      </form>
-      <div class="result" data-result aria-live="polite"></div>
-      <a class="more" href="{{pre}}outils/evaluateur.html">Version complète : sommeil, horaire, environnement, expérience</a>
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="big-owl" viewBox="0 0 400 380">
+        <line class="grid-line" x1="0" y1="190" x2="400" y2="190"/>
+        <line class="grid-line" x1="200" y1="0" x2="200" y2="380"/>
+        <circle class="ring" cx="200" cy="190" r="170"/>
+        <circle class="ring" cx="200" cy="190" r="170"/>
+        <circle class="ring" cx="200" cy="190" r="170"/>
+        <g transform="translate(60 40) scale(7)">
+          <path class="head" d="M5 9 11.5 3.5 16 8.5h8l4.5-5L35 9v15.5C35 32.5 28.3 38 20 38S5 32.5 5 24.5Z"/>
+          <circle class="eye" cx="13.6" cy="19" r="6.2"/><circle class="eye" cx="26.4" cy="19" r="6.2"/>
+          <circle class="iris" cx="13.6" cy="19" r="4.2"/><circle class="iris" cx="26.4" cy="19" r="4.2"/>
+          <circle class="pupil" cx="13.6" cy="19" r="1.9"/><circle class="pupil" cx="26.4" cy="19" r="1.9"/>
+          <path class="beak" d="m20 24 2.2 3.2h-4.4Z"/>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
@@ -64,44 +40,85 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Notre approche</p>
-      <h2>Le risque n'est pas une « erreur humaine ». C'est une situation.</h2>
-      <p class="lead">Accuser l'erreur humaine n'explique rien. Nous regardons les cinq dimensions qui, ensemble, rendent un comportement plus ou moins sûr.</p>
+      <p class="eyebrow">Ce que nous faisons</p>
+      <h2>Comprendre l'humain pour mieux prévenir les risques</h2>
     </div>
-    <div class="model">
-      <div><span class="letter">P</span><h3>Personne</h3><p>Fatigue, attention, stress, expérience, habitudes, perception du risque.</p></div>
-      <div><span class="letter">T</span><h3>Tâche</h3><p>Complexité, nouveauté, répétition, charge mentale, gestes automatisés.</p></div>
-      <div><span class="letter">E</span><h3>Environnement</h3><p>Lumière, bruit, météo, espace, monotonie, sollicitations extérieures.</p></div>
-      <div><span class="letter">S</span><h3>Système</h3><p>Organisation, outils, machines, interfaces, règles, collectif de travail.</p></div>
-      <div><span class="letter">C</span><h3>Contexte</h3><p>Pression temporelle, horaire, enjeux, imprévus, moment de la journée.</p></div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        <h3>Comprendre</h3>
+        <p>Pourquoi on se distrait, on se fatigue ou on prend un risque sans s'en rendre compte. La science expliquée simplement.</p>
+      </div>
+      <div class="pillar">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-5"/><circle cx="12" cy="18" r="1"/></svg></span>
+        <h3>Évaluer</h3>
+        <p>Des tests de quelques minutes pour repérer vos points de vigilance, dans votre situation réelle.</p>
+      </div>
+      <div class="pillar">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <h3>Agir</h3>
+        <p>Des conseils concrets, et pour les entreprises un audit des facteurs humains avec un plan d'action.</p>
+      </div>
     </div>
-    <p class="model-out"><span>P + T + E + S + C</span><span class="arrow">→</span><span>comportement et niveau de risque</span></p>
   </div>
 </section>
 
 <section class="section band-soft">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Comment ça marche</p>
-      <h2>De la recherche à l'action, en six étapes</h2>
+    <div class="audiences">
+      <article class="audience">
+        <img src="{{pre}}assets/img/conducteur.webp" alt="Un conducteur sur une route de campagne." width="1600" height="1068" loading="lazy">
+        <div class="audience-body">
+          <p class="eyebrow">Particuliers</p>
+          <h2>Faites le point sur votre vigilance</h2>
+          <ul class="ticks">
+            <li>Évaluez votre situation du moment en 2 minutes</li>
+            <li>Découvrez vos points faibles au volant</li>
+            <li>Recevez des conseils adaptés à vous</li>
+          </ul>
+          <a class="btn" href="{{pre}}particuliers.html">Commencer</a>
+        </div>
+      </article>
+      <article class="audience">
+        <img src="{{pre}}assets/img/escalade-distraction.webp" alt="Une grimpeuse assure son partenaire tout en téléphonant." width="1536" height="1024" loading="lazy">
+        <div class="audience-body">
+          <p class="eyebrow">Entreprises</p>
+          <h2>Protégez vos équipes durablement</h2>
+          <ul class="ticks">
+            <li>Audit des facteurs humains sur le terrain</li>
+            <li>Plan d'action adapté à votre secteur</li>
+            <li>Sensibilisation et suivi dans le temps</li>
+          </ul>
+          <a class="btn" href="{{pre}}entreprises.html">Découvrir l'offre</a>
+        </div>
+      </article>
     </div>
-    <ol class="steps">
-      <li><h3>Une situation concrète</h3><p>Un trajet de nuit, une tâche répétitive, une supervision d'écran, une sortie en montagne.</p></li>
-      <li><h3>Une explication scientifique</h3><p>Ce que disent les études sur l'attention, la fatigue ou la prise de décision, en langage clair et sourcé.</p></li>
-      <li><h3>Un test ou une auto-évaluation</h3><p>Quelques minutes de questions inspirées d'outils de recherche.</p></li>
-      <li><h3>Un résultat personnalisé</h3><p>Votre profil, les facteurs qui pèsent le plus pour vous, dans votre contexte.</p></li>
-      <li><h3>Des actions concrètes</h3><p>Ce que vous pouvez changer dès aujourd'hui, à votre échelle ou à celle de votre équipe.</p></li>
-      <li><h3>Un suivi dans le temps</h3><p>Refaites les tests et mesurez vos progrès. Espace personnel en préparation.</p></li>
-    </ol>
+  </div>
+</section>
+
+<section class="section band-night">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">En France, en 2023</p>
+      <h2>Derrière chaque chiffre, une situation qu'on aurait pu anticiper</h2>
+    </div>
+    <div class="figures">
+      <div class="figure"><b>555 803</b><span>accidents du travail avec arrêt</span></div>
+      <div class="figure"><b>94 023</b><span>accidents de trajet domicile-travail</span></div>
+      <div class="figure"><b>759</b><span>décès lors d'accidents du travail</span></div>
+    </div>
+    <p class="source-line">Source : <a href="{{pre}}docs/rapport-annuel-assurance-maladie-risques-pro-2023.pdf">Assurance Maladie – Risques professionnels, rapport annuel 2023</a></p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Outils</p>
-      <h2>Testez-vous</h2>
-      <p class="lead">Des outils gratuits pour faire le point, conçus comme des aides à la réflexion.</p>
+    <div class="section-row">
+      <div class="section-head">
+        <p class="eyebrow">Outils gratuits</p>
+        <h2>Testez-vous en quelques minutes</h2>
+      </div>
+      <a class="more" href="{{pre}}outils.html">Tous les outils</a>
     </div>
     <div class="cards">{{TOOLS}}</div>
   </div>
@@ -109,53 +126,28 @@
 
 <section class="section band-soft">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Modules</p>
-      <h2>Chaque terrain a ses risques</h2>
-    </div>
-    <div class="modules">
-      <div class="module"><span class="status live">Disponible</span><h3>Mobilité</h3><p>Attention au volant, fatigue, trajets domicile-travail, vélo et trottinette.</p></div>
-      <div class="module"><span class="status">En préparation</span><h3>Travail</h3><p>Tâches répétitives, manutention, interactions avec les machines, travail isolé.</p></div>
-      <div class="module"><span class="status">En préparation</span><h3>Supervision</h3><p>Surveillance d'écrans et de process automatisés, vigilance prolongée.</p></div>
-      <div class="module"><span class="status">En préparation</span><h3>Maison</h3><p>Chutes, bricolage, travail en hauteur, sécurité des proches.</p></div>
-    </div>
-    <p style="margin-top:1.5rem"><a class="more" href="{{pre}}modules.html">Voir tous les modules</a></p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Articles</p>
-      <h2>Comprendre avant d'agir</h2>
+    <div class="section-row">
+      <div class="section-head">
+        <p class="eyebrow">Articles</p>
+        <h2>Comprendre avant d'agir</h2>
+      </div>
+      <a class="more" href="{{pre}}articles.html">Tous les articles</a>
     </div>
     <div class="cards">{{LATEST_ARTICLES}}</div>
   </div>
 </section>
 
-<section class="section band-night">
-  <div class="wrap split">
-    <div class="hero-copy">
-      <p class="eyebrow">Entreprises et particuliers</p>
-      <h2>Un audit facteurs humains, adapté à votre terrain</h2>
-      <p class="lead">Nous analysons le travail tel qu'il se fait vraiment, pas seulement tel qu'il est prescrit, puis nous proposons des solutions issues de la recherche, adaptées à votre secteur et à vos équipes.</p>
-      <div class="btn-row"><a class="btn" href="{{pre}}audit.html">Découvrir l'audit</a></div>
-    </div>
-    <img src="{{pre}}assets/img/escalade-distraction.webp" alt="Une grimpeuse assure son partenaire tout en téléphonant : une distraction pendant une tâche critique." loading="lazy" width="1536" height="1024">
-  </div>
-</section>
-
 <section class="section">
-  <div class="wrap">
-    <div class="section-head">
+  <div class="wrap split">
+    <div class="section-head" style="margin:0">
       <p class="eyebrow">Lettre d'information</p>
       <h2>Un éclairage scientifique par mois</h2>
-      <p class="lead">Une situation, ce qu'en dit la recherche, et un outil pour agir. Pas de spam, désinscription en un clic.</p>
+      <p class="muted">Une situation, ce qu'en dit la recherche et un conseil pour agir.</p>
     </div>
     <form class="newsletter" data-form="newsletter" data-success="Merci, votre inscription est enregistrée.">
       <input id="nl-email" name="email" type="email" placeholder="votre@adresse.fr" required autocomplete="email" aria-label="Adresse e-mail">
       <button class="btn" type="submit">S'inscrire</button>
-      <p class="form-note">Votre adresse sert uniquement à l'envoi de la lettre. Voir la <a href="{{pre}}mentions-legales.html#confidentialite">politique de confidentialité</a>.</p>
+      <p class="form-note">Votre adresse sert uniquement à l'envoi de la lettre. <a href="{{pre}}mentions-legales.html#confidentialite">Confidentialité</a></p>
       <p class="notice" data-form-message hidden role="status"></p>
     </form>
   </div>

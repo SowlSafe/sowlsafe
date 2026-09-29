@@ -106,32 +106,67 @@
   const sev = (p) => (p >= 14 ? 3 : p >= 7 ? 2 : 1);
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+  function resultHTML(v, full) {
+    const r = evaluate(v);
+    const max = full ? 99 : 3;
+    const shown = r.factors.slice(0, max);
+    const actions = [...new Set(shown.map((x) => x.action).filter(Boolean))].slice(0, full ? 6 : 3);
+    return `
+      <div class="gauge">
+        <div class="gauge-row"><span class="level" data-level="${r.level}">${r.label}</span><span class="score">indice ${r.score}/100</span></div>
+        <div class="meter" role="img" aria-label="Indice de risque ${r.score} sur 100"><i style="left:${Math.max(2, Math.min(98, r.score))}%"></i></div>
+        <div class="meter-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>100</span></div>
+      </div>
+      ${actions.length ? `<div class="field"><p class="field-label">Ce que vous pouvez faire</p><ul class="actions">${actions.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>` : ''}
+      ${shown.length ? `<div class="field"><p class="field-label">Pourquoi</p><ul class="factors">${shown.map((x) =>
+        `<li data-sev="${sev(x.points)}"><span>${esc(x.label)}</span>${full ? `<span class="why">${esc(x.why)}</span>` : ''}</li>`).join('')}</ul></div>`
+      : `<p class="muted">Aucun facteur de risque marquant dans ce contexte. Restez attentif aux changements : fatigue, imprévus, pression.</p>`}`;
+  }
+
   function render(root) {
     const form = root.querySelector('form');
-    const max = Number(root.dataset.max || 99);
     const out = root.querySelector('[data-result]');
     const kssRead = root.querySelector('[data-kss-read]');
-    const update = () => {
-      const v = readForm(form);
-      if (kssRead) kssRead.innerHTML = `<b>${v.kss}/9</b> · ${KSS[v.kss]}`;
-      const r = evaluate(v);
-      const shown = r.factors.slice(0, max);
-      const actions = [...new Set(shown.map((x) => x.action).filter(Boolean))].slice(0, max === 99 ? 8 : 3);
-      out.innerHTML = `
-        <div class="gauge">
-          <div class="gauge-row"><span class="level" data-level="${r.level}">${r.label}</span><span class="score">indice ${r.score}/100</span></div>
-          <div class="meter" role="img" aria-label="Indice de risque ${r.score} sur 100"><i style="left:${Math.max(2, Math.min(98, r.score))}%"></i></div>
-          <div class="meter-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>100</span></div>
-        </div>
-        ${shown.length ? `<div class="field"><p class="field-label">Ce qui pèse le plus</p><ul class="factors">${shown.map((x) =>
-          `<li data-sev="${sev(x.points)}"><span>${esc(x.label)}</span>${max === 99 ? `<span class="why">${esc(x.why)}</span>` : ''}</li>`).join('')}</ul></div>`
-        : `<p class="muted">Aucun facteur de risque marquant dans ce contexte. Restez attentif aux changements : fatigue, imprévus, pression.</p>`}
-        ${actions.length ? `<div class="field"><p class="field-label">Actions recommandées</p><ul class="actions">${actions.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>` : ''}`;
-    };
-    form.addEventListener('input', update);
-    form.addEventListener('change', update);
+    const syncKss = () => { const k = form.elements.kss; if (kssRead && k) kssRead.innerHTML = `<b>${k.value}/9</b> · ${KSS[k.value]}`; };
+    form.addEventListener('input', syncKss); syncKss();
     form.addEventListener('submit', (e) => e.preventDefault());
-    update();
+
+    if (!root.hasAttribute('data-wizard')) {
+      const update = () => { out.innerHTML = resultHTML(readForm(form), root.dataset.max !== '3'); };
+      form.addEventListener('input', update); form.addEventListener('change', update); update();
+      return;
+    }
+
+    // Mode assistant : une étape à la fois
+    const steps = [...form.querySelectorAll('.wiz-step')];
+    const count = root.querySelector('[data-wiz-count]');
+    const bar = root.querySelector('[data-wiz-bar]');
+    const back = root.querySelector('[data-wiz-back]');
+    const next = root.querySelector('[data-wiz-next]');
+    const top = root.querySelector('.wiz-top');
+    const done = root.querySelector('[data-wiz-done]');
+    let i = 0;
+    const show = (n) => {
+      i = n;
+      steps.forEach((s, k) => { s.hidden = k !== i; });
+      count.textContent = `Étape ${i + 1} sur ${steps.length}`;
+      bar.style.width = `${((i + 1) / steps.length) * 100}%`;
+      back.hidden = i === 0;
+      next.textContent = i === steps.length - 1 ? 'Voir mon résultat' : 'Continuer';
+    };
+    const finish = () => {
+      form.hidden = true; top.hidden = true;
+      out.innerHTML = resultHTML(readForm(form), true);
+      done.hidden = false;
+      root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    next.addEventListener('click', () => (i < steps.length - 1 ? show(i + 1) : finish()));
+    back.addEventListener('click', () => show(i - 1));
+    // Passage automatique à l'étape suivante pour les étapes à choix unique
+    steps.forEach((s, k) => s.hasAttribute('data-auto') && s.addEventListener('change', () => setTimeout(() => k === i && show(i + 1), 220)));
+    root.querySelector('[data-wiz-edit]').addEventListener('click', () => { form.hidden = false; top.hidden = false; out.innerHTML = ''; done.hidden = true; show(0); });
+    root.querySelector('[data-wiz-restart]').addEventListener('click', () => { form.reset(); syncKss(); form.hidden = false; top.hidden = false; out.innerHTML = ''; done.hidden = true; show(0); });
+    show(0);
   }
 
   document.querySelectorAll('[data-evaluator]').forEach(render);

@@ -1,36 +1,18 @@
-<!--meta {"title": "Profil attentionnel au volant", "nav": "outils", "scripts": ["quiz.js"], "description": "12 questions pour repérer ce qui fragilise le plus votre attention au volant : distractions extérieures, vagabondage de la pensée, somnolence ou surcharge mentale."} -->
-<section class="hero band-night">
-  <div class="wrap">
-    <div class="hero-copy" style="max-width:46rem">
-      <p class="eyebrow">Outil · Mobilité · 12 questions</p>
-      <h1>Profil attentionnel au volant</h1>
-      <p class="lead">L'inattention n'a pas une seule cause. Repérez ce qui fragilise le plus votre attention quand vous conduisez, pour choisir la bonne parade.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" data-quiz>
-  <div class="wrap">
-    <form class="quiz" novalidate>
-      <p class="muted">Pensez à vos trajets des trois derniers mois. Répondez spontanément : il n'y a pas de bonne réponse.</p>
-      <div class="quiz" data-items></div>
-      <div class="btn-row" style="align-items:center"><button class="btn" type="submit">Voir mon profil</button><span class="progress" data-progress aria-live="polite"></span></div>
-    </form>
-    <div class="result-card" data-quiz-result hidden aria-live="polite"></div>
-  </div>
-</section>
-
-<script type="application/json" id="quiz-config">
 {
-  "scale": ["Jamais", "Rarement", "Parfois", "Souvent", "Très souvent"],
-  "lowThreshold": 30,
-  "lowTitle": "Une attention plutôt bien protégée",
-  "lowText": "Aucune dimension ne ressort nettement. Votre attention au volant semble bien préservée dans vos trajets habituels. Elle reste sensible au contexte : une nuit courte ou un trajet inhabituel peuvent changer la donne.",
-  "lowActions": [
-    "Gardez vos bonnes habitudes : téléphone hors de portée, pauses toutes les deux heures.",
-    "Avant un trajet inhabituel (nuit, longue distance, lieu inconnu), faites le point avec l'évaluateur de contexte."
+  "title": "Profil attentionnel au volant",
+  "published": true,
+  "order": 2,
+  "module": "Mobilité",
+  "summary": "Découvrez ce qui fragilise le plus votre attention quand vous conduisez.",
+  "lead": "12 questions pour repérer ce qui fragilise le plus votre attention au volant.",
+  "intro": "Pensez à vos trajets des 3 derniers mois",
+  "scale": [
+    "Jamais",
+    "Rarement",
+    "Parfois",
+    "Souvent",
+    "Très souvent"
   ],
-  "disclaimer": "Questionnaire de sensibilisation, construit à partir de dimensions étudiées en recherche (par exemple l'échelle ARDES de Ledesma et collègues, 2010, et le questionnaire MW-D de Qu et collègues, 2015). Les questions sont originales et l'outil n'est pas encore validé : il ne constitue pas un diagnostic. Aucune réponse n'est enregistrée.",
   "dimensions": [
     {
       "id": "externe",
@@ -96,6 +78,13 @@
         "Augmentez vos marges : distance de sécurité plus grande, insertion seulement quand l'écart est franc."
       ]
     }
-  ]
+  ],
+  "lowThreshold": 30,
+  "lowTitle": "Une attention plutôt bien protégée",
+  "lowText": "Aucune dimension ne ressort nettement. Votre attention au volant semble bien préservée dans vos trajets habituels. Elle reste sensible au contexte : une nuit courte ou un trajet inhabituel peuvent changer la donne.",
+  "lowActions": [
+    "Gardez vos bonnes habitudes : téléphone hors de portée, pauses toutes les deux heures.",
+    "Avant un trajet inhabituel (nuit, longue distance, lieu inconnu), faites le point avec l'évaluateur de contexte."
+  ],
+  "disclaimer": "Questionnaire de sensibilisation, construit à partir de dimensions étudiées en recherche (par exemple l'échelle ARDES de Ledesma et collègues, 2010, et le questionnaire MW-D de Qu et collègues, 2015). Les questions sont originales et l'outil n'est pas encore validé : il ne constitue pas un diagnostic. Aucune réponse n'est enregistrée."
 }
-</script>

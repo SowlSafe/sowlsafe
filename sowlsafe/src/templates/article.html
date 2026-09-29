@@ -1,11 +1,12 @@
 <section class="wrap page-head">
-  <p class="eyebrow">{{module}} · {{date}} · {{readingTime}} min de lecture</p>
+  <p class="eyebrow">{{module}} · {{date}} · {{readingTime}}</p>
   <h1>{{title}}</h1>
   <p class="lead">{{summary}}</p>
 </section>
 <div class="wrap article-layout">
   <article class="prose">
-    <img class="article-hero" src="{{pre}}assets/img/{{image}}" alt="{{imageAlt}}" width="1600" height="800">
+    {{image}}
+    {{essentiel}}
     {{content}}
   </article>
   <aside class="aside">
