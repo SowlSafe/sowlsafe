@@ -122,7 +122,7 @@
     if (v.moment === 'matin' && dx.includes('tdah')) tips.push('Avec un TDAH, l\'horloge biologique est souvent décalée vers le soir : le début de matinée peut être un moment de moindre vigilance.');
     const refKeys = new Set([...(ACT_REFS[act].any || [])]);
     dx.forEach((d) => (ACT_REFS[act][d] || []).forEach((r) => refKeys.add(r)));
-    if (v.moment === 'matin' || dx.includes('tdah')) refKeys.add('coogan');
+    if (dx.includes('tdah') && ['matin', 'soiree', 'nuit'].includes(v.moment)) refKeys.add('coogan');
 
     return `
       <p class="eyebrow">Votre profil · ${esc(A[act].label)}</p>
