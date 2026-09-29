@@ -1,0 +1,101 @@
+<!--meta {"title": "Profil attentionnel au volant", "nav": "outils", "scripts": ["quiz.js"], "description": "12 questions pour repérer ce qui fragilise le plus votre attention au volant : distractions extérieures, vagabondage de la pensée, somnolence ou surcharge mentale."} -->
+<section class="hero band-night">
+  <div class="wrap">
+    <div class="hero-copy" style="max-width:46rem">
+      <p class="eyebrow">Outil · Mobilité · 12 questions</p>
+      <h1>Profil attentionnel au volant</h1>
+      <p class="lead">L'inattention n'a pas une seule cause. Repérez ce qui fragilise le plus votre attention quand vous conduisez, pour choisir la bonne parade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-quiz>
+  <div class="wrap">
+    <form class="quiz" novalidate>
+      <p class="muted">Pensez à vos trajets des trois derniers mois. Répondez spontanément : il n'y a pas de bonne réponse.</p>
+      <div class="quiz" data-items></div>
+      <div class="btn-row" style="align-items:center"><button class="btn" type="submit">Voir mon profil</button><span class="progress" data-progress aria-live="polite"></span></div>
+    </form>
+    <div class="result-card" data-quiz-result hidden aria-live="polite"></div>
+  </div>
+</section>
+
+<script type="application/json" id="quiz-config">
+{
+  "scale": ["Jamais", "Rarement", "Parfois", "Souvent", "Très souvent"],
+  "lowThreshold": 30,
+  "lowTitle": "Une attention plutôt bien protégée",
+  "lowText": "Aucune dimension ne ressort nettement. Votre attention au volant semble bien préservée dans vos trajets habituels. Elle reste sensible au contexte : une nuit courte ou un trajet inhabituel peuvent changer la donne.",
+  "lowActions": [
+    "Gardez vos bonnes habitudes : téléphone hors de portée, pauses toutes les deux heures.",
+    "Avant un trajet inhabituel (nuit, longue distance, lieu inconnu), faites le point avec l'évaluateur de contexte."
+  ],
+  "disclaimer": "Questionnaire de sensibilisation, construit à partir de dimensions étudiées en recherche (par exemple l'échelle ARDES de Ledesma et collègues, 2010, et le questionnaire MW-D de Qu et collègues, 2015). Les questions sont originales et l'outil n'est pas encore validé : il ne constitue pas un diagnostic. Aucune réponse n'est enregistrée.",
+  "dimensions": [
+    {
+      "id": "externe",
+      "label": "Distractions extérieures",
+      "title": "Votre attention est surtout captée de l'extérieur",
+      "explain": "Téléphone, écrans, réglages, événements au bord de la route : votre regard et vos mains quittent la conduite. Quelques secondes suffisent à parcourir des dizaines de mètres sans rien voir.",
+      "items": [
+        "Je consulte ou manipule mon téléphone en conduisant (message, appel, GPS).",
+        "Je quitte la route des yeux pour régler la radio, la climatisation ou chercher un objet.",
+        "Mon regard est attiré par ce qui se passe au bord de la route (panneau, accident, paysage)."
+      ],
+      "actions": [
+        "Activez le mode conduite du téléphone et rangez-le hors de portée avant de démarrer.",
+        "Réglez GPS, musique et climatisation à l'arrêt, avant de partir.",
+        "Si quelque chose attire votre regard, ralentissez d'abord, regardez ensuite."
+      ]
+    },
+    {
+      "id": "mental",
+      "label": "Vagabondage de la pensée",
+      "title": "Votre esprit part souvent ailleurs",
+      "explain": "Sur les trajets connus, la conduite devient automatique et l'esprit vagabonde. Les yeux restent sur la route, mais on détecte plus tard les imprévus.",
+      "items": [
+        "Sur un trajet habituel, j'arrive sans me souvenir d'une partie du parcours.",
+        "Je pense à mes problèmes ou à ma journée au point de moins faire attention à la route.",
+        "Je réalise tardivement qu'un feu, un panneau ou un piéton était là."
+      ],
+      "actions": [
+        "Avant de démarrer, prenez dix secondes pour laisser de côté ce qui vous préoccupe, ou notez-le.",
+        "Aux points délicats de votre trajet habituel (carrefour, école, sortie), annoncez-vous mentalement ce que vous surveillez.",
+        "Variez de temps en temps votre itinéraire pour sortir du pilote automatique."
+      ]
+    },
+    {
+      "id": "fatigue",
+      "label": "Somnolence",
+      "title": "La fatigue est votre principal point faible",
+      "explain": "La somnolence ralentit les réactions et peut provoquer des micro-sommeils de quelques secondes, sans qu'on s'en rende compte. Lutter contre elle en ouvrant la fenêtre ou en montant le son ne fonctionne pas.",
+      "items": [
+        "Je conduis alors que je me sens fatigué(e) ou somnolent(e).",
+        "Au volant, je bâille souvent, j'ai les paupières lourdes ou je pique du nez.",
+        "Je conduis plus de deux heures d'affilée sans faire de pause."
+      ],
+      "actions": [
+        "Au premier signe (bâillements, paupières lourdes), arrêtez-vous : une sieste de 15 à 20 minutes est la mesure la plus efficace.",
+        "Faites une pause au moins toutes les deux heures, même sans vous sentir fatigué(e).",
+        "Évitez de conduire entre 2 h et 6 h du matin et après une nuit de moins de six heures."
+      ]
+    },
+    {
+      "id": "surcharge",
+      "label": "Surcharge mentale",
+      "title": "Votre attention sature dans les situations complexes",
+      "explain": "Circulation dense, lieu inconnu, décision rapide : trop d'informations arrivent en même temps. L'attention ne peut pas tout traiter, et certaines informations importantes passent à la trappe.",
+      "items": [
+        "Dans une circulation dense ou un lieu inconnu, je me sens dépassé(e) par tout ce qu'il faut surveiller.",
+        "Je rate une sortie ou une direction parce que je suis occupé(e) à autre chose (GPS, discussion).",
+        "J'ai du mal à estimer la vitesse ou la distance des autres véhicules quand il faut décider vite."
+      ],
+      "actions": [
+        "Préparez l'itinéraire avant de partir et activez le guidage vocal plutôt que l'écran.",
+        "Dans les situations complexes, réduisez la vitesse et suspendez les conversations.",
+        "Augmentez vos marges : distance de sécurité plus grande, insertion seulement quand l'écart est franc."
+      ]
+    }
+  ]
+}
+</script>

@@ -1,0 +1,162 @@
+<!--meta {"title": "SowlSafe", "nav": "", "scripts": ["evaluateur.js"], "description": "SowlSafe traduit la recherche en sciences cognitives, psychologie et ergonomie en outils simples pour prendre de meilleures décisions de sécurité, au travail comme au quotidien."} -->
+<section class="hero band-night">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Sciences cognitives · Psychologie · Ergonomie</p>
+      <h1>Voir venir le risque <em>avant</em> qu'il arrive.</h1>
+      <p class="lead">Une même personne ne prend pas les mêmes décisions fatiguée, pressée ou distraite. SowlSafe met la recherche sur le comportement humain à la portée de tous, pour agir sur ce qui compte dans votre situation réelle.</p>
+      <div class="btn-row">
+        <a class="btn" href="{{pre}}outils/evaluateur.html">Évaluer ma situation</a>
+        <a class="btn btn-ghost" href="{{pre}}audit.html">Audit pour les entreprises</a>
+      </div>
+      <p class="formula"><b>Personne</b> + <b>tâche</b> + <b>environnement</b> + <b>système</b> + <b>contexte</b> <span class="arrow">→</span> comportement et niveau de risque</p>
+    </div>
+
+    <div class="panel" data-evaluator data-max="3" aria-labelledby="demo-title">
+      <div class="panel-top">
+        <h2 id="demo-title" class="eyebrow">Évaluateur de contexte</h2>
+        <span class="panel-tag">Exemple pré-rempli · modifiez-le</span>
+      </div>
+      <form>
+        <div class="field">
+          <label for="h-situation">Je m'apprête à…</label>
+          <select id="h-situation" name="situation">
+            <option value="conduite" selected>Conduire (trajet retour du travail)</option>
+            <option value="machine">Utiliser une machine ou un outil</option>
+            <option value="supervision">Surveiller un écran ou un process</option>
+            <option value="sport">Pratiquer un sport</option>
+            <option value="domicile">Bricoler ou travailler en hauteur à la maison</option>
+            <option value="mobilite">Me déplacer à vélo ou à trottinette</option>
+          </select>
+        </div>
+        <div class="field kss">
+          <label for="h-kss">Mon niveau de somnolence</label>
+          <input id="h-kss" name="kss" type="range" min="1" max="9" step="1" value="7" aria-describedby="h-kss-read">
+          <div class="kss-scale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          <p class="kss-read" id="h-kss-read" data-kss-read></p>
+        </div>
+        <fieldset class="field">
+          <legend>Pression temporelle</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="pression" value="aucune" id="h-p0"><span>Aucune</span></label>
+            <label class="chip"><input type="radio" name="pression" value="moderee" id="h-p1" checked><span>Modérée</span></label>
+            <label class="chip"><input type="radio" name="pression" value="forte" id="h-p2"><span>Forte</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Ce qui peut me distraire</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="distractions" value="telephone" id="h-d1" checked><span>Téléphone</span></label>
+            <label class="chip"><input type="checkbox" name="distractions" value="conversation" id="h-d2"><span>Conversation</span></label>
+            <label class="chip"><input type="checkbox" name="distractions" value="preoccupation" id="h-d3"><span>Soucis en tête</span></label>
+          </div>
+        </fieldset>
+        <input type="hidden" name="moment" value="soiree">
+        <input type="hidden" name="tache" value="routine">
+        <input type="hidden" name="experience" value="expert">
+      </form>
+      <div class="result" data-result aria-live="polite"></div>
+      <a class="more" href="{{pre}}outils/evaluateur.html">Version complète : sommeil, horaire, environnement, expérience</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Notre approche</p>
+      <h2>Le risque n'est pas une « erreur humaine ». C'est une situation.</h2>
+      <p class="lead">Accuser l'erreur humaine n'explique rien. Nous regardons les cinq dimensions qui, ensemble, rendent un comportement plus ou moins sûr.</p>
+    </div>
+    <div class="model">
+      <div><span class="letter">P</span><h3>Personne</h3><p>Fatigue, attention, stress, expérience, habitudes, perception du risque.</p></div>
+      <div><span class="letter">T</span><h3>Tâche</h3><p>Complexité, nouveauté, répétition, charge mentale, gestes automatisés.</p></div>
+      <div><span class="letter">E</span><h3>Environnement</h3><p>Lumière, bruit, météo, espace, monotonie, sollicitations extérieures.</p></div>
+      <div><span class="letter">S</span><h3>Système</h3><p>Organisation, outils, machines, interfaces, règles, collectif de travail.</p></div>
+      <div><span class="letter">C</span><h3>Contexte</h3><p>Pression temporelle, horaire, enjeux, imprévus, moment de la journée.</p></div>
+    </div>
+    <p class="model-out"><span>P + T + E + S + C</span><span class="arrow">→</span><span>comportement et niveau de risque</span></p>
+  </div>
+</section>
+
+<section class="section band-soft">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Comment ça marche</p>
+      <h2>De la recherche à l'action, en six étapes</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Une situation concrète</h3><p>Un trajet de nuit, une tâche répétitive, une supervision d'écran, une sortie en montagne.</p></li>
+      <li><h3>Une explication scientifique</h3><p>Ce que disent les études sur l'attention, la fatigue ou la prise de décision, en langage clair et sourcé.</p></li>
+      <li><h3>Un test ou une auto-évaluation</h3><p>Quelques minutes de questions inspirées d'outils de recherche.</p></li>
+      <li><h3>Un résultat personnalisé</h3><p>Votre profil, les facteurs qui pèsent le plus pour vous, dans votre contexte.</p></li>
+      <li><h3>Des actions concrètes</h3><p>Ce que vous pouvez changer dès aujourd'hui, à votre échelle ou à celle de votre équipe.</p></li>
+      <li><h3>Un suivi dans le temps</h3><p>Refaites les tests et mesurez vos progrès. Espace personnel en préparation.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Outils</p>
+      <h2>Testez-vous</h2>
+      <p class="lead">Des outils gratuits pour faire le point, conçus comme des aides à la réflexion.</p>
+    </div>
+    <div class="cards">{{TOOLS}}</div>
+  </div>
+</section>
+
+<section class="section band-soft">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Modules</p>
+      <h2>Chaque terrain a ses risques</h2>
+    </div>
+    <div class="modules">
+      <div class="module"><span class="status live">Disponible</span><h3>Mobilité</h3><p>Attention au volant, fatigue, trajets domicile-travail, vélo et trottinette.</p></div>
+      <div class="module"><span class="status">En préparation</span><h3>Travail</h3><p>Tâches répétitives, manutention, interactions avec les machines, travail isolé.</p></div>
+      <div class="module"><span class="status">En préparation</span><h3>Supervision</h3><p>Surveillance d'écrans et de process automatisés, vigilance prolongée.</p></div>
+      <div class="module"><span class="status">En préparation</span><h3>Maison</h3><p>Chutes, bricolage, travail en hauteur, sécurité des proches.</p></div>
+    </div>
+    <p style="margin-top:1.5rem"><a class="more" href="{{pre}}modules.html">Voir tous les modules</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Articles</p>
+      <h2>Comprendre avant d'agir</h2>
+    </div>
+    <div class="cards">{{LATEST_ARTICLES}}</div>
+  </div>
+</section>
+
+<section class="section band-night">
+  <div class="wrap split">
+    <div class="hero-copy">
+      <p class="eyebrow">Entreprises et particuliers</p>
+      <h2>Un audit facteurs humains, adapté à votre terrain</h2>
+      <p class="lead">Nous analysons le travail tel qu'il se fait vraiment, pas seulement tel qu'il est prescrit, puis nous proposons des solutions issues de la recherche, adaptées à votre secteur et à vos équipes.</p>
+      <div class="btn-row"><a class="btn" href="{{pre}}audit.html">Découvrir l'audit</a></div>
+    </div>
+    <img src="{{pre}}assets/img/escalade-distraction.webp" alt="Une grimpeuse assure son partenaire tout en téléphonant : une distraction pendant une tâche critique." loading="lazy" width="1536" height="1024">
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Lettre d'information</p>
+      <h2>Un éclairage scientifique par mois</h2>
+      <p class="lead">Une situation, ce qu'en dit la recherche, et un outil pour agir. Pas de spam, désinscription en un clic.</p>
+    </div>
+    <form class="newsletter" data-form="newsletter" data-success="Merci, votre inscription est enregistrée.">
+      <input id="nl-email" name="email" type="email" placeholder="votre@adresse.fr" required autocomplete="email" aria-label="Adresse e-mail">
+      <button class="btn" type="submit">S'inscrire</button>
+      <p class="form-note">Votre adresse sert uniquement à l'envoi de la lettre. Voir la <a href="{{pre}}mentions-legales.html#confidentialite">politique de confidentialité</a>.</p>
+      <p class="notice" data-form-message hidden role="status"></p>
+    </form>
+  </div>
+</section>

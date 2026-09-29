@@ -1,0 +1,109 @@
+<!--meta {"title": "Évaluateur de contexte", "nav": "outils", "scripts": ["evaluateur.js"], "description": "Décrivez votre situation du moment et obtenez une estimation de votre niveau de vigilance, les facteurs qui pèsent le plus et des actions adaptées."} -->
+<section class="hero band-night">
+  <div class="wrap">
+    <div class="hero-copy" style="max-width:46rem">
+      <p class="eyebrow">Outil · Tous modules · 2 minutes</p>
+      <h1>Évaluateur de contexte</h1>
+      <p class="lead">Le risque change avec la situation : fatigue, horaire, pression, distractions, environnement. Décrivez votre contexte du moment, le résultat se met à jour en direct.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="panel" data-evaluator style="max-width:52rem; box-shadow:none; border:1px solid var(--line)">
+      <form>
+        <div class="form-row">
+          <div class="field">
+            <label for="e-situation">Je m'apprête à…</label>
+            <select id="e-situation" name="situation">
+              <option value="conduite">Conduire</option>
+              <option value="machine">Utiliser une machine ou un outil</option>
+              <option value="supervision">Surveiller un écran ou un process</option>
+              <option value="sport">Pratiquer un sport</option>
+              <option value="domicile">Bricoler ou travailler en hauteur à la maison</option>
+              <option value="mobilite">Me déplacer à vélo ou à trottinette</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="e-moment">Moment de la journée</label>
+            <select id="e-moment" name="moment">
+              <option value="jour">Matin ou journée</option>
+              <option value="apres-repas">Début d'après-midi (13 h – 16 h)</option>
+              <option value="soiree">Soirée</option>
+              <option value="nuit">Nuit (2 h – 6 h)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field kss">
+          <label for="e-kss">Mon niveau de somnolence en ce moment</label>
+          <span class="field-hint">Échelle de somnolence de Karolinska (KSS), de 1 à 9, utilisée en recherche sur la fatigue.</span>
+          <input id="e-kss" name="kss" type="range" min="1" max="9" step="1" value="3">
+          <div class="kss-scale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+          <p class="kss-read" data-kss-read></p>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="e-sommeil">Sommeil la nuit dernière</label>
+            <select id="e-sommeil" name="sommeil">
+              <option value="plus7">7 heures ou plus</option>
+              <option value="6-7">Entre 6 et 7 heures</option>
+              <option value="5-6">Entre 5 et 6 heures</option>
+              <option value="moins5">Moins de 5 heures</option>
+            </select>
+          </div>
+          <fieldset class="field">
+            <legend>Pression temporelle</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="pression" value="aucune" id="e-p0" checked><span>Aucune</span></label>
+              <label class="chip"><input type="radio" name="pression" value="moderee" id="e-p1"><span>Modérée</span></label>
+              <label class="chip"><input type="radio" name="pression" value="forte" id="e-p2"><span>Forte</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-row">
+          <fieldset class="field">
+            <legend>La tâche est…</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="tache" value="routine" id="e-t0" checked><span>Routinière</span></label>
+              <label class="chip"><input type="radio" name="tache" value="variable" id="e-t1"><span>Habituelle, avec imprévus</span></label>
+              <label class="chip"><input type="radio" name="tache" value="nouvelle" id="e-t2"><span>Nouvelle pour moi</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend>Mon expérience de cette activité</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="experience" value="debutant" id="e-x0"><span>Débutant</span></label>
+              <label class="chip"><input type="radio" name="experience" value="confirme" id="e-x1" checked><span>Confirmé</span></label>
+              <label class="chip"><input type="radio" name="experience" value="expert" id="e-x2"><span>Expert</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset class="field">
+          <legend>Ce qui peut me distraire</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="distractions" value="telephone" id="e-d1"><span>Téléphone ou notifications</span></label>
+            <label class="chip"><input type="checkbox" name="distractions" value="conversation" id="e-d2"><span>Conversation</span></label>
+            <label class="chip"><input type="checkbox" name="distractions" value="preoccupation" id="e-d3"><span>Soucis en tête</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Mon environnement</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="environnement" value="obscurite" id="e-v1"><span>Obscurité</span></label>
+            <label class="chip"><input type="checkbox" name="environnement" value="meteo" id="e-v2"><span>Météo ou sol difficile</span></label>
+            <label class="chip"><input type="checkbox" name="environnement" value="bruit" id="e-v3"><span>Bruit ou chaleur</span></label>
+            <label class="chip"><input type="checkbox" name="environnement" value="monotonie" id="e-v4"><span>Monotonie</span></label>
+          </div>
+        </fieldset>
+      </form>
+      <div class="result" data-result aria-live="polite"></div>
+      <p class="disclaimer">Version 0.1 du moteur de risque contextuel. L'indice combine des facteurs identifiés par la recherche selon des pondérations de conception, pas encore validées statistiquement. C'est une aide à la réflexion : il ne remplace ni un avis médical, ni les règles de sécurité de votre activité. Aucune réponse n'est enregistrée.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+{
+  "name": "sowlsafe",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Site SowlSafe — comprendre l'humain pour mieux prévenir les risques",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs && node check-links.mjs",
+    "preview": "node build.mjs --preview"
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,85 @@
+<!--meta {"title": "Mon style de conduite", "nav": "outils", "scripts": ["quiz.js"], "description": "9 questions inspirées du modèle de James Reason pour distinguer vos écarts volontaires, vos erreurs de jugement et vos ratés d'attention au volant."} -->
+<section class="hero band-night">
+  <div class="wrap">
+    <div class="hero-copy" style="max-width:46rem">
+      <p class="eyebrow">Outil · Mobilité · 9 questions</p>
+      <h1>Mon style de conduite</h1>
+      <p class="lead">Tous les écarts ne se valent pas. Le psychologue James Reason distingue les violations, les erreurs et les ratés. Chacun a ses causes et appelle une réponse différente.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-quiz>
+  <div class="wrap">
+    <form class="quiz" novalidate>
+      <p class="muted">À quelle fréquence cela vous arrive-t-il ? Pensez à l'année écoulée et répondez honnêtement : le résultat n'est visible que par vous.</p>
+      <div class="quiz" data-items></div>
+      <div class="btn-row" style="align-items:center"><button class="btn" type="submit">Voir mon profil</button><span class="progress" data-progress aria-live="polite"></span></div>
+    </form>
+    <div class="result-card" data-quiz-result hidden aria-live="polite"></div>
+  </div>
+</section>
+
+<script type="application/json" id="quiz-config">
+{
+  "scale": ["Jamais", "Très rarement", "Rarement", "Parfois", "Souvent", "Presque toujours"],
+  "lowThreshold": 25,
+  "lowTitle": "Une conduite plutôt maîtrisée",
+  "lowText": "Vos réponses ne font pas ressortir de type d'écart dominant. C'est une bonne base, qui reste à entretenir : fatigue, pression ou trajet inhabituel peuvent faire basculer n'importe quel conducteur.",
+  "lowActions": [
+    "Faites le point sur votre contexte avant les trajets inhabituels avec l'évaluateur de contexte.",
+    "Complétez avec le test de profil attentionnel pour repérer vos points de vigilance."
+  ],
+  "disclaimer": "Questionnaire de sensibilisation inspiré de la distinction entre violations, erreurs et ratés proposée par Reason et collègues (1990) dans le Driver Behaviour Questionnaire. Les questions sont originales et l'outil n'est pas validé : il ne constitue pas une évaluation officielle. Aucune réponse n'est enregistrée.",
+  "dimensions": [
+    {
+      "id": "violations",
+      "label": "Violations (écarts volontaires)",
+      "title": "Vos écarts sont surtout volontaires",
+      "explain": "Les violations sont des écarts délibérés aux règles : on sait, mais on choisit de faire autrement, souvent pour gagner du temps ou sous l'effet de l'humeur. Dans les études utilisant ce type de questionnaire, ce sont elles qui sont le plus liées à l'implication dans des accidents.",
+      "items": [
+        "Je dépasse la limitation de vitesse quand la route me semble dégagée.",
+        "Je reste très près du véhicule de devant pour qu'il accélère ou se rabatte.",
+        "Je passe à l'orange alors que j'aurais pu m'arrêter."
+      ],
+      "actions": [
+        "Partez 10 minutes plus tôt : la plupart des violations viennent de la pression du temps.",
+        "Utilisez le régulateur ou le limiteur de vitesse pour ne plus avoir à choisir à chaque instant.",
+        "Repérez vos déclencheurs (retard, énervement, conducteur lent) et décidez à l'avance de votre réaction."
+      ]
+    },
+    {
+      "id": "erreurs",
+      "label": "Erreurs (de jugement ou de perception)",
+      "title": "Vos écarts viennent surtout d'erreurs de jugement",
+      "explain": "Les erreurs sont involontaires : on a mal vu, mal évalué une vitesse ou une distance, ou choisi la mauvaise action face à l'imprévu. Elles se réduisent en entraînant la perception des dangers et en gardant des marges.",
+      "items": [
+        "Je sous-estime la vitesse d'un véhicule qui arrive lorsque je tourne ou que je dépasse.",
+        "Je remarque tard un piéton, un cycliste ou un deux-roues en tournant.",
+        "Face à une situation imprévue, je fais la mauvaise manœuvre (freinage trop brusque, mauvais évitement)."
+      ],
+      "actions": [
+        "Avant de tourner ou de vous insérer, regardez deux fois, et une troisième pour les deux-roues.",
+        "Gardez une marge : si vous hésitez sur l'écart, attendez le suivant.",
+        "Un stage de perfectionnement ou d'éco-conduite entraîne l'anticipation et la lecture de la route."
+      ]
+    },
+    {
+      "id": "rates",
+      "label": "Ratés (oublis et automatismes)",
+      "title": "Vos écarts sont surtout des ratés d'attention",
+      "explain": "Les ratés sont des actions qui ne se déroulent pas comme prévu : un automatisme prend le dessus ou un détail est oublié. Ils signalent une attention accaparée ailleurs ou de la fatigue, rarement un manque de compétence.",
+      "items": [
+        "Je prends machinalement mon itinéraire habituel alors que je voulais aller ailleurs.",
+        "J'oublie de mettre mon clignotant ou je le mets du mauvais côté.",
+        "J'actionne la mauvaise commande (essuie-glaces au lieu du clignotant, par exemple)."
+      ],
+      "actions": [
+        "Avant de démarrer, annoncez-vous la destination et les étapes clés du trajet.",
+        "Réduisez les sources de distraction (téléphone, conversations prenantes) sur les trajets habituels.",
+        "Multiplication des ratés = signal de fatigue : faites le point avec l'évaluateur de contexte."
+      ]
+    }
+  ]
+}
+</script>

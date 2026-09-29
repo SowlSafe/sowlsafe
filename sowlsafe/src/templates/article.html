@@ -1,0 +1,22 @@
+<section class="wrap page-head">
+  <p class="eyebrow">{{module}} · {{date}} · {{readingTime}} min de lecture</p>
+  <h1>{{title}}</h1>
+  <p class="lead">{{summary}}</p>
+</section>
+<div class="wrap article-layout">
+  <article class="prose">
+    <img class="article-hero" src="{{pre}}assets/img/{{image}}" alt="{{imageAlt}}" width="1600" height="800">
+    {{content}}
+  </article>
+  <aside class="aside">
+    <div class="aside-block">
+      <p class="aside-title">Passer à l'action</p>
+      {{tool}}
+    </div>
+    <div class="aside-block">
+      <p class="aside-title">Sources</p>
+      <ol>{{sources}}</ol>
+    </div>
+    <p><a class="more" href="{{pre}}articles.html">Tous les articles</a></p>
+  </aside>
+</div>
