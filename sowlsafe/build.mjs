@@ -139,7 +139,8 @@ const A11Y_PANEL = `<div class="a11y">
     </div>`;
 
 function layout({ meta, body, rel, isEntry }) {
-  const pre = '../'.repeat(rel.split('/').length - 1);
+  // La page 404 peut s'afficher à n'importe quelle profondeur : chemins absolus
+  const pre = rel === '404.html' && !PREVIEW ? '/' : '../'.repeat(rel.split('/').length - 1);
   const title = meta.title === SITE.name ? `${SITE.name} · ${SITE.tagline}` : `${meta.title} · ${SITE.name}`;
   const nav = NAV.map(([k, label, href]) =>
     `<a href="${pre}${href}"${meta.nav === k ? ' aria-current="page"' : ''}>${label}</a>`).join('');
