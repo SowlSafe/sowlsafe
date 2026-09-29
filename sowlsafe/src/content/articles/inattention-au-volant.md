@@ -3,18 +3,19 @@ title: "Inattention au volant : un danger sous-estimé"
 published: true
 module: Mobilité
 date: 2025-08-25
+updated: 2026-09-29
 readingTime: 5
 summary: "Téléphone, fatigue, pensées qui vagabondent, automatismes : l'inattention a plusieurs visages. Comprendre lequel vous concerne est la première étape pour s'en protéger."
 image: conduite-telephone.webp
 imageAlt: "Vue depuis le siège conducteur dans un embouteillage, un téléphone fixé au tableau de bord."
 essentiel:
-  - "Les accidents de trajet augmentent : 94 023 en 2023 en France."
+  - "94 654 accidents de trajet en 2024 en France, et 318 décès."
   - "L'inattention a 5 causes principales : distractions, fatigue, pensées qui vagabondent, automatisation, environnement."
   - "Connaître sa cause principale permet de choisir la bonne parade."
 tool: profil-attentionnel
 sources:
-  - label: "Assurance Maladie – Risques professionnels, rapport annuel 2023"
-    url: "/docs/rapport-annuel-assurance-maladie-risques-pro-2023.pdf"
+  - label: "Assurance Maladie – Risques professionnels, rapport annuel 2024 (novembre 2025)"
+    url: "https://www.assurance-maladie.ameli.fr/etudes-et-donnees/2024-rapport-annuel-assurance-maladie-risques-professionnels"
   - label: "American Journal of Preventive Medicine – distractions et risque d'accident"
     url: "https://www.sciencedirect.com/science/article/pii/S0749379718324504"
   - label: "Sécurité routière – La fatigue et la conduite"
@@ -30,11 +31,11 @@ Chaque jour, des millions de personnes prennent la route pour aller travailler, 
 
 ## Ce que disent les chiffres
 
-Les accidents de trajet, survenus entre le domicile et le lieu de travail, sont en hausse. En 2023, l'Assurance Maladie en a indemnisé **94 023**, soit 5,1 % de plus qu'en 2022 [1].
+Les accidents de trajet, survenus entre le domicile et le lieu de travail, continuent d'augmenter. En 2024, l'Assurance Maladie en a reconnu **94 654**, soit 0,7 % de plus qu'en 2023 [1].
 
-- **94 023** accidents de trajet indemnisés en 2023
-- **60 %** dus à la perte de contrôle d'un moyen de transport
-- **332** décès, dont 72 % d'origine routière
+- **94 654** accidents de trajet reconnus en 2024
+- **318** décès, dont 70 % liés au risque routier
+- La **perte de contrôle d'un moyen de transport** reste la première circonstance
 
 Derrière une « perte de contrôle », il y a souvent un moment où l'attention n'était plus là. Pour les entreprises, chacun de ces accidents représente aussi un coût : arrêts de travail, désorganisation, remplacement.
 

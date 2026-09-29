@@ -430,3 +430,17 @@ html.a11y-contrast a:not(.btn):not(.card-link):not(.choice) { text-decoration: u
 .speak[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
 .ticks li { display: block; position: relative; padding-left: 1.1rem; }
 .ticks li::before { position: absolute; left: 0; top: .6em; transform: none; }
+
+/* réseaux sociaux */
+.social-band { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+.social-list { display: flex; flex-wrap: wrap; gap: .75rem; }
+.social-btn { display: inline-flex; align-items: center; gap: .6rem; padding: .8rem 1.1rem; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; text-decoration: none; transition: border-color .15s, transform .15s; }
+a.social-btn:hover { border-color: var(--accent); transform: translateY(-2px); }
+.social-btn svg, .social-mini svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.social-btn small, .social-mini small { font: 500 .6875rem var(--f-mono); color: var(--muted); }
+.social-btn.is-soon { opacity: .75; }
+.footer-social { display: flex; gap: .9rem; margin-top: .5rem; }
+.social-mini { display: inline-flex; color: var(--on-night); }
+.social-mini > span, .social-mini small { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.social-mini.is-soon { opacity: .5; }
+.tile { align-content: start; }

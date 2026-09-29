@@ -104,6 +104,20 @@ const toolCard = (t) => `<a class="card-link tool-card" href="{{pre}}${t.href}">
 // Adresse publique d'une page (Cloudflare sert les pages sans « .html »)
 const pageUrl = (rel) => `${SITE.url}/${rel.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '')}`;
 
+// Réseaux sociaux (adresses dans site.json)
+const SOCIAL_ICONS = {
+  linkedin: ['LinkedIn', '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.8v.01M11.5 16v-3.2a2.2 2.2 0 0 1 4.4 0V16M11.5 10.5V16"/>'],
+  instagram: ['Instagram', '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.3 6.7v.01"/>'],
+  tiktok: ['TikTok', '<path d="M14 3.5v11a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3.5c.6 2.6 2.4 4.3 5 4.6"/>'],
+};
+const socialLinks = (cls) => Object.entries(SOCIAL_ICONS).map(([k, [name, icon]]) => {
+  const url = (SITE.social || {})[k];
+  const svg = `<svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>`;
+  return url
+    ? `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${svg}<span>${name}</span></a>`
+    : `<span class="${cls} is-soon">${svg}<span>${name}</span><small>bientôt</small></span>`;
+}).join('');
+
 // ---------- gabarit ----------
 const OWL = `<svg class="owl" viewBox="0 0 40 40" aria-hidden="true"><path class="owl-head" d="M5 9 11.5 3.5 16 8.5h8l4.5-5L35 9v15.5C35 32.5 28.3 38 20 38S5 32.5 5 24.5Z"/><circle class="owl-eye" cx="13.6" cy="19" r="6.2"/><circle class="owl-eye" cx="26.4" cy="19" r="6.2"/><circle class="owl-iris" cx="13.6" cy="19" r="3"/><circle class="owl-iris" cx="26.4" cy="19" r="3"/><path class="owl-iris" d="m20 24 2.2 3.2h-4.4Z"/></svg>`;
 
@@ -180,6 +194,7 @@ ${body.replaceAll('{{pre}}', pre)}
       <a class="brand" href="${pre}index.html">${OWL}<span>Sowl<b>Safe</b></span></a>
       <p>${esc(SITE.tagline)}</p>
       <p class="signature">${esc(SITE.signature)}</p>
+      <div class="footer-social">${socialLinks('social-mini')}</div>
     </div>
     <div><p class="footer-title">Plateforme</p>${FOOTER_NAV.map(([, l, h]) => `<a href="${pre}${h}">${l}</a>`).join('')}</div>
     <div><p class="footer-title">Outils</p>${tools.map((t) => `<a href="${pre}${t.href}">${esc(t.title)}</a>`).join('')}</div>
@@ -214,7 +229,8 @@ function render(meta, body, rel) {
     .replaceAll('{{ARTICLES}}', articles.map(articleCard).join('\n') || '<p class="muted">Les premiers articles arrivent bientôt.</p>')
     .replaceAll('{{LATEST_ARTICLES}}', articles.slice(0, 3).map(articleCard).join('\n'))
     .replaceAll('{{TOOLS}}', tools.map(toolCard).join('\n'))
-    .replaceAll('{{SIGNATURE}}', esc(SITE.signature));
+    .replaceAll('{{SIGNATURE}}', esc(SITE.signature))
+    .replaceAll('{{SOCIAL}}', `<div class="social-list">${socialLinks('social-btn')}</div>`);
   const html = layout({ meta, body, rel, isEntry: PREVIEW && rel === 'index.html' });
   const dst = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(dst), { recursive: true });
@@ -240,7 +256,7 @@ for (const a of articles) {
   const tool = tools.find((t) => t.id === m.tool) || tools[0];
   const essentiel = (m.essentiel || []).filter(Boolean);
   const body = fill(articleTpl, {
-    title: esc(m.title), module: esc(m.module), date: frDate(m.date), readingTime: m.readingTime ? `${m.readingTime} min de lecture` : '',
+    title: esc(m.title), module: esc(m.module), date: frDate(m.date) + (m.updated ? ` (mis à jour le ${frDate(m.updated)})` : ''), readingTime: m.readingTime ? `${m.readingTime} min de lecture` : '',
     summary: esc(m.summary),
     image: m.image ? `<img class="article-hero" src="${imageUrl(m.image)}" alt="${esc(m.imageAlt)}" width="1600" height="800">` : '',
     essentiel: essentiel.length ? `<div class="essentiel"><p class="aside-title">L'essentiel en ${essentiel.length} points</p><ul>${essentiel.map((e) => `<li>${esc(e)}</li>`).join('')}</ul></div>` : '',

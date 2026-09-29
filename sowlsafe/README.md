@@ -1,7 +1,7 @@
 # SowlSafe
 
 **Comprendre l'humain pour mieux prévenir les risques.**
-Sécurité · Sûreté · Santé · Sciences
+Sécurité · Bien-être · Productivité
 
 Site statique sans dépendance : un petit générateur (`build.mjs`) assemble les pages avec l'en-tête et le pied de page communs.
 

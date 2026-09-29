@@ -25,9 +25,12 @@ content:
         label: Module
         type: select
         options:
-          values: [Mobilité, Travail, Industrie, Supervision, Maison, Sport, Sûreté, Inclusion, Facteurs humains]
+          values: [Mobilité, Travail, Industrie, Supervision, Maison, Sport, Vie quotidienne, Inclusion, Facteurs humains]
       - name: date
         label: Date de publication
+        type: date
+      - name: updated
+        label: Date de mise à jour (facultatif)
         type: date
       - name: readingTime
         label: Temps de lecture (minutes)
@@ -88,7 +91,7 @@ content:
         label: Module
         type: select
         options:
-          values: [Mobilité, Travail, Industrie, Supervision, Maison, Sport, Sûreté, Inclusion, Facteurs humains, Tous modules]
+          values: [Mobilité, Travail, Industrie, Supervision, Maison, Sport, Vie quotidienne, Inclusion, Facteurs humains, Tous modules]
       - name: summary
         label: Résumé affiché sur la carte du test
         type: text
