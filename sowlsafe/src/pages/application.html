@@ -1,0 +1,98 @@
+<!--meta {"title": "L'application", "nav": "application", "description": "L'application SowlSafe : questionnaires par modules, guides, formations courtes, conseils personnalisés et suivi, pour les particuliers et les entreprises."} -->
+<section class="page-hero band-night">
+  <div class="wrap split">
+    <div class="hero-copy">
+      <p class="eyebrow">Bientôt disponible</p>
+      <h1>L'application SowlSafe</h1>
+      <p class="lead">Vos questionnaires, vos guides, vos formations et votre suivi, réunis au même endroit. Pour chacun, et pour les équipes accompagnées après un audit.</p>
+      <div class="btn-row"><a class="btn" href="#inscription">Être prévenu du lancement</a></div>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div class="phone-screen">
+        <p class="phone-kicker">Bonjour Camille</p>
+        <p class="phone-title">Votre vigilance cette semaine</p>
+        <div class="phone-bars"><i style="height:55%"></i><i style="height:70%"></i><i style="height:48%"></i><i style="height:82%"></i><i style="height:76%"></i><i style="height:88%"></i><i class="now" style="height:91%"></i></div>
+        <div class="phone-card"><b>Module Conduite</b><span>3 questionnaires sur 4 réalisés</span><em><i style="width:75%"></i></em></div>
+        <div class="phone-card"><b>Conseil du jour</b><span>Trajet de nuit prévu : faites une pause toutes les deux heures.</span></div>
+        <div class="phone-card"><b>Formation · 8 min</b><span>Reconnaître les signes de fatigue</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="audiences">
+      <article class="audience">
+        <div class="audience-body">
+          <p class="eyebrow">Pour les particuliers</p>
+          <h2>Votre espace personnel</h2>
+          <ul class="ticks">
+            <li><b>Des questionnaires par modules</b> : conduite, fatigue, maison, sport, travail… vous activez ceux qui vous concernent</li>
+            <li><b>Votre suivi dans le temps</b> : vos résultats sont conservés, vous voyez vos progrès</li>
+            <li><b>Des conseils personnalisés</b> selon vos résultats et votre situation du moment</li>
+            <li><b>Des guides et des formations courtes</b>, à suivre à votre rythme</li>
+            <li><b>Des rappels utiles</b>, par exemple avant un long trajet</li>
+            <li><b>Votre bilan personnalisé</b> avec nos spécialistes, et son suivi</li>
+          </ul>
+        </div>
+      </article>
+      <article class="audience">
+        <div class="audience-body">
+          <p class="eyebrow">Pour les entreprises</p>
+          <h2>Le prolongement de l'audit</h2>
+          <ul class="ticks">
+            <li><b>Des modules activés selon vos besoins</b> : conduite, travail répétitif, supervision, inclusion…</li>
+            <li><b>Les guides issus de votre audit</b>, adaptés à chaque poste</li>
+            <li><b>Des formations courtes</b> pour vos équipes</li>
+            <li><b>Des conseils personnalisés</b> pour chaque salarié, selon ses résultats</li>
+            <li><b>Un tableau de bord</b> : participation, évolution, actions réalisées</li>
+          </ul>
+          <p class="notice">Les résultats individuels restent confidentiels : l'employeur ne voit que des données regroupées et anonymes.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section band-soft">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Entreprises</p>
+      <h2>De l'audit au suivi</h2>
+    </div>
+    <ol class="steps" style="grid-template-columns:repeat(auto-fit, minmax(min(100%, 14rem), 1fr))">
+      <li><h3>Audit</h3><p>Nous analysons le travail réel sur le terrain.</p></li>
+      <li><h3>Plan d'action</h3><p>Les facteurs prioritaires et les solutions retenues.</p></li>
+      <li><h3>Accompagnement</h3><p>Questionnaires, guides, formations et conseils dans l'application.</p></li>
+      <li><h3>Suivi</h3><p>Le tableau de bord mesure l'évolution et guide les ajustements.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="inscription">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Lancement</p>
+      <h2>Soyez parmi les premiers</h2>
+      <p class="lead">Laissez votre adresse pour être prévenu du lancement. Les entreprises peuvent aussi devenir entreprise pilote.</p>
+    </div>
+    <form class="form" data-form="application" data-success="Merci, nous vous préviendrons dès le lancement.">
+      <fieldset class="field">
+        <legend>Je suis</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="profil" value="particulier" id="app-p1" checked><span>Un particulier</span></label>
+          <label class="chip"><input type="radio" name="profil" value="entreprise" id="app-p2"><span>Une entreprise</span></label>
+          <label class="chip"><input type="radio" name="profil" value="pilote" id="app-p3"><span>Une entreprise qui veut être pilote</span></label>
+        </div>
+      </fieldset>
+      <div class="form-row">
+        <div class="field"><label for="app-email">E-mail</label><input id="app-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="app-org">Organisation <span class="field-hint">(facultatif)</span></label><input id="app-org" name="organisation" type="text" autocomplete="organization"></div>
+      </div>
+      <label class="check" for="app-rgpd"><input type="checkbox" id="app-rgpd" name="consentement" required><span>J'accepte d'être contacté au sujet de l'application (<a href="{{pre}}mentions-legales.html#confidentialite">confidentialité</a>).</span></label>
+      <div><button class="btn" type="submit">Être prévenu</button></div>
+      <p class="notice" data-form-message hidden role="status"></p>
+    </form>
+  </div>
+</section>

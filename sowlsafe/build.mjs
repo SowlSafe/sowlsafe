@@ -127,6 +127,7 @@ const NAV = [
   ['inclusion', 'Inclusion', 'inclusion.html'],
   ['outils', 'Outils', 'outils.html'],
   ['articles', 'Articles', 'articles.html'],
+  ['application', "L'appli", 'application.html'],
 ];
 const FOOTER_NAV = [...NAV, ['a-propos', 'À propos', 'a-propos.html'], ['approche', 'Notre approche', 'approche.html'], ['modules', 'Modules', 'modules.html']];
 
