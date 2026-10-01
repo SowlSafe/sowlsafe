@@ -28,6 +28,8 @@
         return;
       }
       const data = new URLSearchParams(new FormData(form));
+      // Mêmes champs pour tous les formulaires : un seul tableau côté Make
+      ['profil', 'nom', 'email', 'organisation', 'message'].forEach((k) => { if (!data.has(k)) data.set(k, ''); });
       data.set('formulaire', form.dataset.form);
       data.set('page', location.pathname);
       data.set('date', new Date().toISOString());
