@@ -16,11 +16,61 @@
           <label class="chip"><input type="radio" name="profil" value="entreprise" id="c-entreprise"><span>Une entreprise ou organisation</span></label>
         </div>
       </fieldset>
-      <div class="form-row">
-        <div class="field"><label for="c-nom">Nom et prénom</label><input id="c-nom" name="nom" type="text" required autocomplete="name"></div>
-        <div class="field"><label for="c-email">E-mail</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="field">
+        <label for="c-objet">Votre demande concerne</label>
+        <select id="c-objet" name="objet" required>
+          <option value="">Choisissez…</option>
+          <option value="audit">Un audit pour mon organisation</option>
+          <option value="neuro-inclusion">La neuro-inclusion au travail</option>
+          <option value="bilan">Un bilan personnalisé pour moi ou un proche</option>
+          <option value="formation">Une formation ou une sensibilisation</option>
+          <option value="application">L'application (pilote, démonstration)</option>
+          <option value="partenariat">Un partenariat ou une collaboration de recherche</option>
+          <option value="autre">Autre chose</option>
+        </select>
       </div>
-      <div class="field"><label for="c-message">Votre message</label><textarea id="c-message" name="message" required placeholder="Décrivez votre besoin en quelques lignes."></textarea></div>
+      <div class="form-row">
+        <div class="field"><label for="c-prenom">Prénom</label><input id="c-prenom" name="prenom" type="text" required autocomplete="given-name"></div>
+        <div class="field"><label for="c-nom">Nom</label><input id="c-nom" name="nom" type="text" required autocomplete="family-name"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="c-email">E-mail</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="c-tel">Téléphone <span class="field-hint">(facultatif)</span></label><input id="c-tel" name="telephone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="form-group" data-show-if="profil=entreprise" hidden>
+        <div class="form-row">
+          <div class="field"><label for="c-org">Organisation</label><input id="c-org" name="organisation" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="c-fonction">Votre fonction</label><input id="c-fonction" name="fonction" type="text" autocomplete="organization-title" placeholder="Ex. DRH, responsable QSE, référent handicap"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="c-taille">Effectif</label>
+            <select id="c-taille" name="effectif">
+              <option value="">Choisissez…</option>
+              <option>Moins de 10 salariés</option><option>10 à 49 salariés</option><option>50 à 249 salariés</option><option>250 salariés et plus</option>
+            </select>
+          </div>
+          <div class="field"><label for="c-secteur">Secteur</label>
+            <select id="c-secteur" name="secteur">
+              <option value="">Choisissez…</option>
+              <option>Transport et logistique</option><option>BTP</option><option>Industrie</option><option>Santé et social</option><option>Services et bureaux</option><option>Public et collectivités</option><option>Autre</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field"><label for="c-message">Votre message</label><textarea id="c-message" name="message" required placeholder="Décrivez votre besoin en quelques lignes : contexte, personnes concernées, échéance…"></textarea></div>
+      <div class="form-row">
+        <div class="field"><label for="c-contact">Vous préférez être recontacté(e) par</label>
+          <select id="c-contact" name="preference_contact">
+            <option>E-mail</option><option>Téléphone</option><option>Visioconférence</option>
+          </select>
+        </div>
+        <div class="field"><label for="c-source">Comment avez-vous connu SowlSafe ? <span class="field-hint">(facultatif)</span></label>
+          <select id="c-source" name="source">
+            <option value="">Choisissez…</option>
+            <option>Recherche Google</option><option>LinkedIn</option><option>Instagram</option><option>TikTok</option><option>Bouche-à-oreille</option><option>Événement ou conférence</option><option>Autre</option>
+          </select>
+        </div>
+      </div>
       <label class="check" for="c-rgpd"><input type="checkbox" id="c-rgpd" name="consentement" required><span>J'accepte que mes informations soient utilisées pour répondre à ma demande (<a href="{{pre}}mentions-legales.html#confidentialite">confidentialité</a>).</span></label>
       <div><button class="btn" type="submit">Envoyer</button></div>
       <p class="notice" data-form-message hidden role="status"></p>

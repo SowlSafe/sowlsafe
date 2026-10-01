@@ -477,3 +477,5 @@ a.social-btn:hover { border-color: var(--accent); transform: translateY(-2px); }
 @media (max-width: 40rem) { .diff-row { grid-template-columns: minmax(0, 1fr); } }
 .big-score { font: 700 1.6rem var(--f-display); color: var(--ink); }
 .refs { margin: 0; padding-left: 1.1rem; display: grid; gap: .45rem; font-size: var(--s-xs); color: var(--muted); }
+input[type="tel"] { width: 100%; font: inherit; font-size: var(--s-sm); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .65rem .75rem; }
+.form-group { display: grid; gap: 1rem; }

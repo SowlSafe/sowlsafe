@@ -14,6 +14,14 @@
   const pre = h && document.getElementById('c-' + h);
   if (pre && pre.type === 'radio') pre.checked = true;
 
+  // Blocs affichés selon une réponse (ex. data-show-if="profil=entreprise")
+  document.querySelectorAll('[data-show-if]').forEach((group) => {
+    const [name, value] = group.dataset.showIf.split('=');
+    const form = group.closest('form');
+    const sync = () => { group.hidden = form.elements[name]?.value !== value; };
+    form.addEventListener('change', sync); sync();
+  });
+
   // Adresse de réception des formulaires (site.json > formsEndpoint, par ex. un webhook Make ou n8n).
   // Tant qu'elle est vide, les formulaires n'envoient rien et le disent clairement.
   const FORMS_ENDPOINT = document.querySelector('meta[name="forms-endpoint"]')?.content || '';
@@ -29,7 +37,7 @@
       }
       const data = new URLSearchParams(new FormData(form));
       // Mêmes champs pour tous les formulaires : un seul tableau côté Make
-      ['profil', 'nom', 'email', 'organisation', 'message'].forEach((k) => { if (!data.has(k)) data.set(k, ''); });
+      ['profil', 'objet', 'prenom', 'nom', 'email', 'telephone', 'organisation', 'fonction', 'effectif', 'secteur', 'message', 'preference_contact', 'source'].forEach((k) => { if (!data.has(k)) data.set(k, ''); });
       data.set('formulaire', form.dataset.form);
       data.set('page', location.pathname);
       data.set('date', new Date().toISOString());
