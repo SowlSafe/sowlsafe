@@ -14,10 +14,12 @@
   const pre = h && document.getElementById('c-' + h);
   if (pre && pre.type === 'radio') pre.checked = true;
 
-  // Tant que FORMS_ENDPOINT est vide, les formulaires n'envoient rien et le disent clairement.
-  const FORMS_ENDPOINT = '';
+  // Adresse de réception des formulaires (site.json > formsEndpoint, par ex. un webhook Make ou n8n).
+  // Tant qu'elle est vide, les formulaires n'envoient rien et le disent clairement.
+  const FORMS_ENDPOINT = document.querySelector('meta[name="forms-endpoint"]')?.content || '';
   document.querySelectorAll('form[data-form]').forEach((form) => {
     const msg = form.querySelector('[data-form-message]');
+    const btn = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
@@ -25,15 +27,19 @@
         if (msg) { msg.hidden = false; msg.textContent = "Ce formulaire n'est pas encore relié : rien n'a été envoyé. Il sera activé lors de la mise en ligne officielle."; }
         return;
       }
+      const data = new URLSearchParams(new FormData(form));
+      data.set('formulaire', form.dataset.form);
+      data.set('page', location.pathname);
+      data.set('date', new Date().toISOString());
+      if (btn) btn.disabled = true;
       try {
-        const data = Object.fromEntries(new FormData(form));
-        const res = await fetch(FORMS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ form: form.dataset.form, ...data }) });
-        if (!res.ok) throw new Error(res.status);
+        // Envoi simple (sans pré-vérification CORS) : compatible avec les webhooks Make et n8n
+        await fetch(FORMS_ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
         form.reset();
         if (msg) { msg.hidden = false; msg.textContent = form.dataset.success || 'Merci, votre message a bien été envoyé.'; }
       } catch {
         if (msg) { msg.hidden = false; msg.textContent = "L'envoi a échoué. Vérifiez votre connexion et réessayez."; }
-      }
+      } finally { if (btn) btn.disabled = false; }
     });
   });
 })();

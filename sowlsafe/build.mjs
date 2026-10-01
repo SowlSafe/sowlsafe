@@ -173,6 +173,7 @@ function layout({ meta, body, rel, isEntry }) {
 <meta property="og:site_name" content="${SITE.name}">
 ${SITE.googleVerification ? `<meta name="google-site-verification" content="${esc(SITE.googleVerification)}">` : ''}
 <meta name="theme-color" content="#13233a">
+${SITE.formsEndpoint ? `<meta name="forms-endpoint" content="${esc(SITE.formsEndpoint)}">` : ''}
 ${A11Y_BOOT}
 <link rel="icon" href="${pre}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
